@@ -202,9 +202,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1924044365}
-        m_TargetAssemblyTypeName: GameSettingsController, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 1361983813}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: StartSfx
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -216,7 +216,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1361983813}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: StartSfx
+        m_MethodName: ConfigurarJogo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

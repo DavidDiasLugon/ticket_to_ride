@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a9a87c481cf723c41bb717e04d105319
+guid: 9fb58f0f91fd5034e955c23cddf0d151
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2188186775282808625
-    second: MenuAjustesBack_0
+      213: 8372472312265930973
+    second: amarelo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MenuAjustesBack_0
+      name: amarelo_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1200
-        height: 900
+        width: 132
+        height: 206
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc88f0da8bff1a1e0800000000000000
-      internalID: -2188186775282808625
+      spriteID: dd87760753ff03470800000000000000
+      internalID: 8372472312265930973
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      amarelo_0: 8372472312265930973
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
