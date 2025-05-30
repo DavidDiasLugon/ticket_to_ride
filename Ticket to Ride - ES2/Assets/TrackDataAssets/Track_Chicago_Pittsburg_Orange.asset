@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc0a84936a83c444b7158146fecd476, type: 3}
+  m_Name: Track_Chicago_Pittsburg_Orange
+  m_EditorClassIdentifier: 
+  city1Name: Chicago
+  city2Name: Pittsburg
+  length: 3
+  color: 7
+  isDoubleTrack: 1
+  twinTrack: {fileID: 11400000, guid: 863c33e58f543f9498229e3e297ddf61, type: 2}

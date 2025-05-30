@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc0a84936a83c444b7158146fecd476, type: 3}
+  m_Name: Track_Raleigh_Washington_Gray_A
+  m_EditorClassIdentifier: 
+  city1Name: Raleigh
+  city2Name: Washington
+  length: 2
+  color: 0
+  isDoubleTrack: 1
+  twinTrack: {fileID: 11400000, guid: 50f32a8a38beee843b30612a3a17f99b, type: 2}
