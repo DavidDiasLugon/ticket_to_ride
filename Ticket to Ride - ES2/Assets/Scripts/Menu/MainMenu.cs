@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     public List<GameObject> playerComponents;
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Jogo");
     }
 
     public void QuitGame()
@@ -30,9 +30,10 @@ public class MainMenu : MonoBehaviour
 
     public void ConfigurarJogo()
     {
-        Jogador jogador1 = new Jogador();
+        Jogador jogador1 = ScriptableObject.CreateInstance<Jogador>();
         jogador1.Nome = "PLAYER 1";
         jogador1.Cor = "azul";
+        jogador1.UpdateNumeroCartasDict();
         GameSettings.jogadores.Add(jogador1);
         foreach (GameObject player in playerComponents)
         {
@@ -41,10 +42,10 @@ public class MainMenu : MonoBehaviour
             {
                 TMP_Dropdown dropdown = player.GetComponentInChildren<TMP_Dropdown>();
                 string opcaoSelecionada = dropdown.options[dropdown.value].text;
-                if (opcaoSelecionada == "Real")
+                if (opcaoSelecionada == "REAL")
                 {
                     TextMeshProUGUI nome = player.GetComponentInChildren<TextMeshProUGUI>();
-                    Jogador jogador = new Jogador();
+                    Jogador jogador = ScriptableObject.CreateInstance<Jogador>();
                     jogador.Nome = nome.text;
                     if (jogador.Nome == "PLAYER 2")
                     {
@@ -70,6 +71,7 @@ public class MainMenu : MonoBehaviour
                 }
             }
         }
+        PlayGame();
     }
     
     

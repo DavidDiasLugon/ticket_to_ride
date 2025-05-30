@@ -13,9 +13,9 @@ public class DeckCartas : ScriptableObject
         set => deckCartas = value;
     }
 
-    public List<Carta> Embaralha()
+    public void Embaralha()
     {
-        return deckCartas.OrderBy(x => UnityEngine.Random.Range(0f, 1f)).ToList();
+        deckCartas = deckCartas.OrderBy(x => UnityEngine.Random.Range(0f, 1f)).ToList();
     }
 
     public Carta CompraCarta()

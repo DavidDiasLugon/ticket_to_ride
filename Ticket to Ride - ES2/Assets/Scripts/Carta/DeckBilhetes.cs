@@ -13,9 +13,9 @@ public class DeckBilhetes : ScriptableObject
         set => deckBilhetes = value;
     }
 
-    public List<Bilhete> Embaralha()
+    public void Embaralha()
     {
-        return deckBilhetes.OrderBy(x => UnityEngine.Random.Range(0f, 1f)).ToList();
+        deckBilhetes = deckBilhetes.OrderBy(x => UnityEngine.Random.Range(0f, 1f)).ToList();
     }
 
     public Bilhete CompraBilhete()
