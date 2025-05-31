@@ -6,6 +6,7 @@ public class _GameManager : MonoBehaviour
     public Controle controle;
     public UIMao maoCartas;
     public UICartasAbertas cartasAbertas;
+    public UIHud uiHud;
 
     private void Awake()
     {
