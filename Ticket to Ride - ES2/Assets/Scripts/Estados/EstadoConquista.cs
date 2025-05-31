@@ -9,6 +9,10 @@ public class EstadoConquista : EstadoJogo
 
     public override void RunEstado(Controle controle)
     {
-        
+
+    }
+    
+    public override void ProcessarSelecao(Controle controle, int indice, Carta cartaSelecionada)
+    {
     }
 }

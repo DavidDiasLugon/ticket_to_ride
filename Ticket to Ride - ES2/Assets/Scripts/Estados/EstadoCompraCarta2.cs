@@ -9,11 +9,15 @@ public class EstadoCompraCarta2 : EstadoJogo
         controle.JogadorAtual.UpdateNumeroCartasDict();
         _GameManager.Instance.maoCartas.AtualizaExibicao(controle.JogadorAtual.CartaNmr);
         controle.TrocaEstado(EstadoFimTurno.CreateInstance<EstadoFimTurno>());
-        
+
     }
 
     public override void RunEstado(Controle controle)
     {
-        
+
+    }
+    
+    public override void ProcessarSelecao(Controle controle, int indice, Carta cartaSelecionada)
+    {
     }
 }

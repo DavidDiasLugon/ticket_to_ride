@@ -8,7 +8,7 @@ public class EstadoCompraBilhete : EstadoJogo
         List<Bilhete> bilhetesComprados = new List<Bilhete>();
         List<Bilhete> bilhetesEscolhidos = new List<Bilhete>();
         Bilhete b;
-        for (int i = 0; i<3; i++)
+        for (int i = 0; i < 3; i++)
         {
             b = controle.DeckBilhetes.CompraBilhete();
             bilhetesComprados.Add(b);
@@ -17,6 +17,10 @@ public class EstadoCompraBilhete : EstadoJogo
 
     public override void RunEstado(Controle controle)
     {
-        
+
+    }
+
+    public override void ProcessarSelecao(Controle controle, int indice, Carta cartaSelecionada)
+    {
     }
 }

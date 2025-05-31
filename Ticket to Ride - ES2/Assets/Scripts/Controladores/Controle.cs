@@ -7,10 +7,10 @@ public class Controle : ScriptableObject
 {
     private List<Jogador> jogadores = new List<Jogador>();
     private DeckCartas deckCartas;
-    private List<Carta> cartasAbertas =  new List<Carta>();
+    private List<Carta> cartasAbertas = new List<Carta>();
     private DeckBilhetes deckBilhetes;
     private Jogador jogadorAtual;
-    private int turno = 0; 
+    private int turno = 0;
     private EstadoJogo estadoAtual;
 
     void OnEnable()
@@ -46,11 +46,16 @@ public class Controle : ScriptableObject
         get => jogadorAtual;
         set => jogadorAtual = value;
     }
-    
+
     public int Turno
     {
         get => turno;
         set => turno = value;
+    }
+
+    public List<Carta> CartasAbertas
+    {
+        get => cartasAbertas;
     }
 
     public void Preparacao()
@@ -78,49 +83,55 @@ public class Controle : ScriptableObject
         }
     }
 
-    public void CartasAbertas()
+    public void AtualizarCartasAbertas()
     {
-        if(cartasAbertas.Count > 0)
+        if (cartasAbertas.Count > 0)
         {
-            for(int i = 0; i < 6; i++)
+            foreach (Carta carta in cartasAbertas)
             {
-                deckCartas.Add(cartasAbertas[i]);
+                if (carta != null)
+                {
+                    deckCartas.Add(carta);
+                }
             }
             cartasAbertas.Clear();
             deckCartas.Embaralha();
         }
         Carta c;
-        for(int i = 0; i < 6; i++)
+        for (int i = 0; i < 5; i++)
         {
             c = deckCartas.CompraCarta();
-            cartasAbertas[i] = c;
+            if (c != null)
+            {
+                cartasAbertas.Add(c);
+            }
         }
         VerificaLocomotivas();
     }
 
     public void VerificaLocomotivas()
     {
-        int count = 0; 
-        foreach(Carta carta in cartasAbertas)
+        int count = 0;
+        foreach (Carta carta in cartasAbertas)
         {
-            if(carta.isLocomotive == true)
+            if (carta.isLocomotive == true)
             {
                 count++;
             }
         }
-        if(count >= 3)
+        if (count >= 3)
         {
-            CartasAbertas();
+            AtualizarCartasAbertas();
         }
     }
 
     public void CriaCartas()
     {
         List<Carta> cartas = new List<Carta>();
-        List<string> cores = new List<string> {"vermelho", "azul", "amarelo", "verde", "rosa", "preto", "laranja", "branco"};
-        foreach(string cor in cores)
+        List<string> cores = new List<string> { "vermelho", "azul", "amarelo", "verde", "rosa", "preto", "laranja", "branco" };
+        foreach (string cor in cores)
         {
-            for(int i = 0; i < 12; i++)
+            for (int i = 0; i < 12; i++)
             {
                 Carta c = CreateInstance<Carta>();
                 c.Cor = cor;
@@ -130,7 +141,7 @@ public class Controle : ScriptableObject
             }
         }
 
-        for(int i = 0; i < 14; i++)
+        for (int i = 0; i < 14; i++)
         {
             Carta c = CreateInstance<Carta>();
             c.Cor = "colorido";
@@ -144,7 +155,7 @@ public class Controle : ScriptableObject
         deckCartas.Embaralha();
 
         List<Bilhete> bilhetes = new List<Bilhete>();
-        for(int i=0; i < 31; i++)
+        for (int i = 0; i < 31; i++)
         {
             Bilhete b = CreateInstance<Bilhete>();
             // Cria bilhetes de destino
@@ -156,7 +167,8 @@ public class Controle : ScriptableObject
         deckBilhetes.Embaralha();
     }
 
-    public Jogador getJogadorAtual() {
+    public Jogador getJogadorAtual()
+    {
         int index = turno % jogadores.Count;
         return jogadores[index];
     }
@@ -175,5 +187,10 @@ public class Controle : ScriptableObject
     public void RunEstadoAtual()
     {
         estadoAtual.RunEstado(this);
+    }
+    
+    public void CartaSelecionada(int index, Carta cartaSelecionada)
+    {
+        estadoAtual.ProcessarSelecao(this, index, cartaSelecionada);
     }
 }

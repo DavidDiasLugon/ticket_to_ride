@@ -15,15 +15,19 @@ public class EstadoFimTurno : EstadoJogo
         }
         else
         {
+            Debug.Log("Fim do turno de: " + controle.JogadorAtual.Nome);
             controle.Turno++;
             controle.JogadorAtual = controle.getJogadorAtual();
             controle.TrocaEstado(EstadoEspera.CreateInstance<EstadoEspera>());
-            
         }
     }
 
     public override void RunEstado(Controle controle)
     {
-        
+
+    }
+    
+    public override void ProcessarSelecao(Controle controle, int indice, Carta cartaSelecionada)
+    {
     }
 }
