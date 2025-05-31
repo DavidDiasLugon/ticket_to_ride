@@ -9,6 +9,8 @@ public class EstadoEspera : EstadoJogo
     {
         controle.JogadorAtual.UpdateNumeroCartasDict();
         _GameManager.Instance.maoCartas.AtualizaExibicao(controle.JogadorAtual.CartaNmr);
+        _GameManager.Instance.uiHud.AtualizaMainHud(controle);
+        _GameManager.Instance.uiHud.AtualizaOtherPlayerHud(controle);
         Debug.Log("Turno de: " + controle.JogadorAtual.Nome);
         botaoCompraCarta = GameObject.Find("BotaoCarta")?.GetComponent<Button>();
         botaoCompraBilhete = GameObject.Find("BotaoBilhete")?.GetComponent<Button>();
