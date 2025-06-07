@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,22 +29,20 @@ public class UIHud : MonoBehaviour
         Color cor = GetColor(controle.JogadorAtual);
 
         Image nameBox = mainHudObj.transform.Find("NameBox").GetComponent<Image>();
-        nameBox.color = cor;
         TextMeshProUGUI name = nameBox.GetComponentInChildren<TextMeshProUGUI>();
         name.text = controle.JogadorAtual.Nome;
+        name.color = cor;
 
         Image pointsBox = mainHudObj.transform.Find("PointsBox").GetComponent<Image>();
+        pointsBox.color = cor;
         TextMeshProUGUI points = pointsBox.GetComponentInChildren<TextMeshProUGUI>();
         points.text = controle.JogadorAtual.Pontuacao.ToString();
 
-        Image trainBox = mainHudObj.transform.Find("TrainsBox").GetComponent<Image>();
-        trainBox.color = cor;
-        TextMeshProUGUI trains = trainBox.GetComponentInChildren<TextMeshProUGUI>();
+        Image infoBox = mainHudObj.transform.Find("InfoBox").GetComponent<Image>();
+        infoBox.color = cor;
+        TextMeshProUGUI trains = infoBox.transform.Find("Trains").GetComponent<TextMeshProUGUI>();
         trains.text = controle.JogadorAtual.Trens.ToString();
-
-        Image ticketBox = mainHudObj.transform.Find("TicketBox").GetComponent<Image>();
-        ticketBox.color = cor;
-        TextMeshProUGUI tickets = ticketBox.GetComponentInChildren<TextMeshProUGUI>();
+        TextMeshProUGUI tickets = infoBox.transform.Find("Tickets").GetComponent<TextMeshProUGUI>();
         tickets.text = controle.JogadorAtual.MaoBilhetes.Count.ToString();
     }
 
@@ -68,18 +65,21 @@ public class UIHud : MonoBehaviour
             Color cor = GetColor(jogador);
 
             Image nameBox = hudObj.transform.Find("NameBox").GetComponent<Image>();
-            nameBox.color = cor;
             TextMeshProUGUI name = nameBox.GetComponentInChildren<TextMeshProUGUI>();
             name.text = jogador.Nome;
+            name.color = cor;
+
+            Image infoBox = hudObj.transform.Find("InfoBox").GetComponent<Image>();
+            infoBox.color = cor;
+            TextMeshProUGUI trains = infoBox.transform.Find("Trains").GetComponent<TextMeshProUGUI>();
+            trains.text = jogador.Trens.ToString();
+            TextMeshProUGUI tickets = infoBox.transform.Find("Tickets").GetComponent<TextMeshProUGUI>();
+            tickets.text = jogador.MaoBilhetes.Count.ToString();
 
             Image pointsBox = hudObj.transform.Find("PointsBox").GetComponent<Image>();
+            pointsBox.color = cor;
             TextMeshProUGUI points = pointsBox.GetComponentInChildren<TextMeshProUGUI>();
             points.text = jogador.Pontuacao.ToString();
-
-            Image trainBox = hudObj.transform.Find("TrainsBox").GetComponent<Image>();
-            trainBox.color = cor;
-            TextMeshProUGUI trains = trainBox.GetComponentInChildren<TextMeshProUGUI>();
-            trains.text = jogador.Trens.ToString();
 
             otherPlayerHudObjs.Add(hudObj);
         }

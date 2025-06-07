@@ -12,12 +12,14 @@ public class Controle : ScriptableObject
     private Jogador jogadorAtual;
     private int turno = 0;
     private EstadoJogo estadoAtual;
+    private TextAsset ticketsTxt;
 
     void OnEnable()
     {
         deckCartas = CreateInstance<DeckCartas>();
         cartasAbertas = new List<Carta>();
         deckBilhetes = CreateInstance<DeckBilhetes>();
+        ticketsTxt = Resources.Load<TextAsset>("Tickets");
     }
 
     public List<Jogador> Jogadores
@@ -61,7 +63,6 @@ public class Controle : ScriptableObject
     public void Preparacao()
     {
         Carta c;
-        Bilhete b;
         foreach (Jogador jogador in jogadores)
         {
             for (int i = 0; i < 5; i++)
@@ -71,15 +72,6 @@ public class Controle : ScriptableObject
             }
             jogador.StartDict();
             jogador.UpdateNumeroCartasDict();
-        }
-
-        foreach (Jogador jogador in jogadores)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                b = deckBilhetes.CompraBilhete();
-                jogador.MaoBilhetes.Add(b);
-            }
         }
     }
 
@@ -154,11 +146,17 @@ public class Controle : ScriptableObject
         deckCartas = cartasDeck;
         deckCartas.Embaralha();
 
+        string[] lines = ticketsTxt.text.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
         List<Bilhete> bilhetes = new List<Bilhete>();
-        for (int i = 0; i < 31; i++)
+        foreach(string line in lines)
         {
+            string[] parts = line.Split("_");
+            string origem = parts[0].Trim();
+            string destino = parts[1].Trim();
+            int pontos = int.Parse(parts[2].Trim());
             Bilhete b = CreateInstance<Bilhete>();
-            // Cria bilhetes de destino
+            b.Rota = new string[] { origem, destino };
+            b.Pontos = pontos;
             bilhetes.Add(b);
         }
         DeckBilhetes bilhetesDeck = CreateInstance<DeckBilhetes>();
