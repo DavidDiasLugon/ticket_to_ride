@@ -24,14 +24,28 @@ jobs:
       - uses: actions/checkout@v4
         with:
           lfs: true
-          token: ${{ secrets.GITHUB_TOKEN }}  
-          fetch-depth: 0  
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Check Disk Space
+        run: df -h && du -sh ./*
+
       - uses: actions/cache@v4
         with:
           path: ${{ matrix.projectPath }}/Library
           key: Library-${{ matrix.projectPath }}-${{ hashFiles('**/ProjectSettings/**') }}
           restore-keys: |
             Library-${{ matrix.projectPath }}-
+
+      # Docker setup
+      - name: Setup Docker for Standalone
+        if: matrix.testMode == 'standalone'
+        run: |
+          sudo groupadd docker || true
+          sudo usermod -aG docker $USER
+          sudo chmod 666 /var/run/docker.sock
+          docker info
+
       - uses: game-ci/unity-test-runner@v4
         id: tests
         env:
@@ -45,6 +59,27 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: ${{ matrix.testMode }} Test Results
           coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
+          unityVersion: '6000.0.43f1'  
+          dockerIsolationMode: process 
+          debug: true 
+
+
+      - name: Collect Standalone Logs
+        if: failure() && matrix.testMode == 'standalone'
+        run: |
+          echo "=== Docker Container Logs ==="
+          docker ps -a
+          docker logs $(docker ps -aq) || true
+          
+          echo "=== Build Logs ==="
+          find . -name 'build*.log' -exec cat {} \;
+          
+          echo "=== Test Logs ==="
+          find . -name 'test*.log' -exec cat {} \;
+          
+          echo "=== Player Logs ==="
+          find . -path '*/Temp/StandalonePlayer/*' -name 'Player.log' -exec cat {} \;
+
       - name: Verify artifacts exist
         run: |
           echo "Artifacts path: ${{ steps.tests.outputs.artifactsPath }}"
@@ -52,6 +87,7 @@ jobs:
           echo "Coverage path: ${{ steps.tests.outputs.coveragePath }}"
           ls -la ${{ steps.tests.outputs.coveragePath }} || echo "Coverage not found"
         if: always()
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
