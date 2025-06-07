@@ -68,7 +68,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e9459462c4c4be4ca17333a8b66143d, type: 2}
-  m_sharedMaterial: {fileID: 6236649753338551076, guid: 9e9459462c4c4be4ca17333a8b66143d, type: 2}
+  m_sharedMaterial: {fileID: 8233240998168389903, guid: 9e9459462c4c4be4ca17333a8b66143d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 4043581401751825680}
   - component: {fileID: 835441943417147145}
   - component: {fileID: 3521161473725033168}
+  - component: {fileID: 8448484304167733489}
   m_Layer: 0
   m_Name: Carta
   m_TagString: Untagged
@@ -212,3 +213,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8448484304167733489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2441848915845772497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a1744ad9291f5448441b98f516bb48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1

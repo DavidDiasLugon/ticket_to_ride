@@ -1,0 +1,30 @@
+Boston_Miami_12
+Calgary_Phoenix_13
+Calgary_Salt Lake City_7
+Chicago_New Orleans_7
+Chicago_Santa Fe_9
+Dallas_New York_11
+Denver_El Paso_4
+Denver_Pittsburgh_11
+Duluth_El Paso_10
+Duluth_Houston_8
+Helena_Los Angeles_8
+Kansas City_Houston_5
+Los Angeles_Chicago_16
+Los Angeles_Miami_20
+Los Angeles_New York_21
+Montréal_Atlanta_9
+Montréal_New Orleans_13
+New York_Atlanta_6
+Portland_Nashville_17
+Portland_Phoenix_11
+San Francisco_Atlanta_17
+Sault St. Marie_Nashville_8
+Sault St. Marie_Oklahoma City_9
+Seattle_Los Angeles_9
+Seattle_New York_22
+Toronto_Miami_10
+Vancouver_Montréal_20
+Vancouver_Santa Fe_13
+Winnipeg_Houston_12
+Winnipeg_Little Rock_11

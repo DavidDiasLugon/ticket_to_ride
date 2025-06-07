@@ -16,5 +16,6 @@ public class Bilhete : ScriptableObject
     public string[] Rota
     {
         get => rota;
+        set => rota = value;
     } 
 }
