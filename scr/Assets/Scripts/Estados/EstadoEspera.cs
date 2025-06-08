@@ -78,6 +78,7 @@ public class EstadoEspera : EstadoJogo
 
     public override void ProcessarSelecao(Controle controle, int indice, Carta cartaSelecionada)
     {
+        FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
         Debug.Log("Processando seleção de carta");
         controle.JogadorAtual.MaoCartas.Add(cartaSelecionada);
         controle.CartasAbertas.RemoveAt(indice);
@@ -102,9 +103,9 @@ public class EstadoEspera : EstadoJogo
         RectTransform cardBox = mainCanvas.transform.Find("CardBox").GetComponent<RectTransform>();
         cardBox.gameObject.SetActive(false);
         RectTransform selectionBox = mainCanvas.transform.Find("SelectionBox").GetComponent<RectTransform>();
-        foreach (GameObject bilheteObj in bilhetesInstanciados)
+        foreach (Transform child in selectionBox.transform)
         {
-            Destroy(bilheteObj);
+            Destroy(child.gameObject);
         }
         bilhetesInstanciados.Clear();
         bilhetesDisponiveis.Clear();
@@ -135,6 +136,7 @@ public class EstadoEspera : EstadoJogo
         botaoSelect.onClick.RemoveAllListeners();
         botaoSelect.onClick.AddListener(() =>
         {
+            FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
             foreach (Bilhete bilhete in bilhetesSelecionados)
             {
                 controle.JogadorAtual.MaoBilhetes.Add(bilhete);
@@ -144,9 +146,9 @@ public class EstadoEspera : EstadoJogo
             {
                 controle.DeckBilhetes.Deck.Add(bilhete);
             }
-            foreach (GameObject bilheteObj in bilhetesInstanciados)
+            foreach (Transform child in selectionBox.transform)
             {
-                Destroy(bilheteObj);
+                Destroy(child.gameObject);
             }
             bilhetesInstanciados.Clear();
             bilhetesDisponiveis.Clear();
@@ -161,6 +163,7 @@ public class EstadoEspera : EstadoJogo
 
     public void OnBilheteClicked(Bilhete bilhete, Button botaoSelect, GameObject bilheteObj)
     {
+        FindAnyObjectByType<GameAudioManager>().Play("TicketClick");
         if (bilhetesSelecionados.Contains(bilhete))
         {
             bilheteObj.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -182,7 +185,7 @@ public class EstadoEspera : EstadoJogo
         //gameBoard.SetActive(false);
         //tracksContainer.SetActive(false);
     }
-    
+
     public void ShowObjects()
     {
         cartasAbertas.gameObject.SetActive(true);

@@ -13,6 +13,7 @@ public class CardHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        FindAnyObjectByType<GameAudioManager>().Play("CardHover");
         transform.localScale = new Vector3(hoverScale, hoverScale, originalScale.z);
     }
 

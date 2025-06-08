@@ -3,25 +3,25 @@ using UnityEngine;
 
 public class TrackController : MonoBehaviour
 {
-    // --- Variáveis ---
+    // --- Variï¿½veis ---
     public TrackData trackData;
     public List<TrackSegmentController> segments = new List<TrackSegmentController>();
     public bool isClaimed { get; private set; } = false;
     public int ownerPlayerId { get; private set; } = -1;
 
     private GameManager gameManager;
-    private bool isSelected = false; // Novo estado: este trilho está selecionado?
+    private bool isSelected = false; // Novo estado: este trilho estï¿½ selecionado?
 
     // --- Cores ---
     private static readonly Color HOVER_COLOR = new Color(1f, 1f, 0.7f, 1f); // Amarelo claro (Hover)
     private static readonly Color SELECTED_COLOR = new Color(0.7f, 1f, 0.7f, 1f); // Verde claro (Selecionado)
 
-    // --- Inicialização ---
+    // --- Inicializaï¿½ï¿½o ---
     void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
-        if (gameManager == null) Debug.LogError("TrackController não conseguiu encontrar o GameManager!");
-        // InitializeVisuals é chamado por Initialize agora
+        if (gameManager == null) Debug.LogError("TrackController nï¿½o conseguiu encontrar o GameManager!");
+        // InitializeVisuals ï¿½ chamado por Initialize agora
     }
 
     public void Initialize(TrackData data, List<TrackSegmentController> segmentList)
@@ -43,12 +43,12 @@ public class TrackController : MonoBehaviour
         int sortOrder = Mathf.RoundToInt(-transform.position.y * 10);
         foreach (var segment in segments)
         {
-            // A chamada inicial passa 'false' para isClaiming, garantindo que o efeito do shader está desligado.
+            // A chamada inicial passa 'false' para isClaiming, garantindo que o efeito do shader estï¿½ desligado.
             segment?.SetVisuals(baseColor, sortOrder, false);
         }
     }
 
-    // --- Lógica de Interação ---
+    // --- Lï¿½gica de Interaï¿½ï¿½o ---
 
     // Chamado pelo Segmento ao ser clicado
     public void HandleSelectionAttempt()
@@ -66,7 +66,7 @@ public class TrackController : MonoBehaviour
 
         foreach (var segment in segments)
         {
-            // A lógica de highlight agora é tratada no TrackSegmentController
+            // A lï¿½gica de highlight agora ï¿½ tratada no TrackSegmentController
             segment?.SetHighlight(highlight, HOVER_COLOR);
         }
     }
@@ -74,7 +74,7 @@ public class TrackController : MonoBehaviour
     // Chamado pelo GameManager para definir o estado SELECIONADO
     public void SetSelected(bool select)
     {
-        if (isClaimed) return; // Não pode selecionar se já reivindicado
+        if (isClaimed) return; // Nï¿½o pode selecionar se jï¿½ reivindicado
 
         isSelected = select;
         foreach (var segment in segments)
@@ -88,7 +88,7 @@ public class TrackController : MonoBehaviour
     }
 
 
-    // Chamado pelo GameManager APÓS validar a reivindicação
+    // Chamado pelo GameManager APï¿½S validar a reivindicaï¿½ï¿½o
     public void Claim(int playerId, Color playerColor)
     {
         if (isClaimed) return;
@@ -97,7 +97,7 @@ public class TrackController : MonoBehaviour
         ownerPlayerId = playerId;
         Debug.Log($"Trilho {gameObject.name} reivindicado pelo Player {playerId}");
 
-        // Aumenta a ordem para ficar na frente de trilhos não reivindicados na mesma Y
+        // Aumenta a ordem para ficar na frente de trilhos nï¿½o reivindicados na mesma Y
         int sortOrder = Mathf.RoundToInt(-transform.position.y * 10) + 1;
         foreach (var segment in segments)
         {
@@ -107,7 +107,7 @@ public class TrackController : MonoBehaviour
         }
     }
 
-    // Método para reverter o Claim
+    // Mï¿½todo para reverter o Claim
     public void Unclaim()
     {
         if (!isClaimed) return;
@@ -142,7 +142,7 @@ public class TrackController : MonoBehaviour
             originalSegmentColors.Add(segmentOriginalColor);
             if (segment != null && segment.GetComponent<SpriteRenderer>() != null)
             {
-                // Este feedback visual temporário pode ser ajustado para funcionar com o shader
+                // Este feedback visual temporï¿½rio pode ser ajustado para funcionar com o shader
                 // por enquanto, ele vai sobrescrever a cor base do SpriteRenderer
                 segment.GetComponent<SpriteRenderer>().color = flashColor;
             }
@@ -166,23 +166,30 @@ public class TrackController : MonoBehaviour
     }
 
 
-    // --- Métodos Utilitários ---
+    // --- Mï¿½todos Utilitï¿½rios ---
     public static Color GetColorFromEnum(TrackColor trackColor)
     {
         switch (trackColor)
         {
-            case TrackColor.Red: return Color.red;
-            case TrackColor.Blue: return Color.blue;
-            case TrackColor.Green: return Color.green;
-            case TrackColor.Yellow: return Color.yellow;
-            case TrackColor.Black: return Color.black;
-            case TrackColor.White: return Color.white;
-            case TrackColor.Orange: return new Color(1.0f, 0.64f, 0.0f);
-            case TrackColor.Pink: return Color.magenta;
+            case TrackColor.Red: return HexToColor("#E0390E");
+            case TrackColor.Blue: return HexToColor("#0A5BA6");
+            case TrackColor.Green: return HexToColor("#829241");
+            case TrackColor.Yellow: return HexToColor("#EDCB15");
+            case TrackColor.Black: return HexToColor("#201C1B");
+            case TrackColor.White: return HexToColor("#D5D9D8");
+            case TrackColor.Orange: return HexToColor("#BE8333");
+            case TrackColor.Pink: return HexToColor("#9D6DA2");
             case TrackColor.Gray: return Color.gray;
         }
 
-        Debug.LogWarning($"Cor de trilha não mapeada explicitamente: {trackColor}. Retornando Gray.");
+        Debug.LogWarning($"Cor de trilha nï¿½o mapeada explicitamente: {trackColor}. Retornando Gray.");
         return Color.gray;
+    }
+
+    public static Color HexToColor(string hex)
+    {
+        Color cor;
+        ColorUtility.TryParseHtmlString(hex, out cor);
+        return cor;
     }
 }

@@ -4,6 +4,7 @@ public class EstadoCompraCarta1 : EstadoJogo
 {
     public override void IniciarEstado(Controle controle)
     {
+        FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
         Debug.Log("Comprando primeira carta");
         Carta c = controle.DeckCartas.CompraCarta();
         controle.JogadorAtual.MaoCartas.Add(c);
