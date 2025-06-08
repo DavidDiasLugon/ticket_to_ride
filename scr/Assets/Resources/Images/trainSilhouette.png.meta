@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      trainSilhouette_0: 1493507777651074256
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
