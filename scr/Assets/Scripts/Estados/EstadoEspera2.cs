@@ -10,13 +10,21 @@ public class EstadoEspera2 : EstadoJogo
         controle.JogadorAtual.UpdateNumeroCartasDict();
         _GameManager.Instance.maoCartas.AtualizaExibicao(controle.JogadorAtual.CartaNmr);
         botaoCompraCarta = GameObject.Find("BotaoCarta")?.GetComponent<Button>();
-
-        botaoCompraCarta.onClick.AddListener(() =>
+        if (controle.JogadorAtual.isAI)
         {
-            Debug.Log("Botão Compra Carta Clicado");
             botaoCompraCarta.onClick.RemoveAllListeners();
-            controle.TrocaEstado(EstadoCompraCarta2.CreateInstance<EstadoCompraCarta2>());
-        });
+            AIController ai = new AIController(controle);
+            ai.ExecuteSecondCardDrawAction();
+        }
+        else
+        {
+            botaoCompraCarta.onClick.AddListener(() =>
+            {
+                Debug.Log("Botão Compra Carta Clicado");
+                botaoCompraCarta.onClick.RemoveAllListeners();
+                controle.TrocaEstado(EstadoCompraCarta2.CreateInstance<EstadoCompraCarta2>());
+            });
+        }
     }
 
     public override void RunEstado(Controle controle)

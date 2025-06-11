@@ -6,6 +6,7 @@ using System.Linq;
 public class Jogador : ScriptableObject
 {
     private string cor;
+    public bool isAI;
     private string nome;
     private int pontuacao = 0;
     private int trens = 45;
@@ -72,6 +73,6 @@ public class Jogador : ScriptableObject
         {
             cartaNmr[cor] = maoCartas.Count(carta => carta.Cor == cor);
         }
-        
+
     }
 }

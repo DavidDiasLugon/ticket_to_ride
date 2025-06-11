@@ -49,26 +49,40 @@ public class EstadoEspera : EstadoJogo
             Debug.LogError("Botões de compra não encontrados!");
             return;
         }
-
-        botaoCompraCarta.onClick.AddListener(() =>
-        {
-            Debug.Log("Botão Compra Carta Clicado");
-            botaoCompraCarta.onClick.RemoveAllListeners();
-            botaoCompraBilhete.onClick.RemoveAllListeners();
-            controle.TrocaEstado(EstadoCompraCarta1.CreateInstance<EstadoCompraCarta1>());
-        });
-
-        botaoCompraBilhete.onClick.AddListener(() =>
-        {
-            Debug.Log("Botão Compra Bilhete Clicado");
-            botaoCompraBilhete.onClick.RemoveAllListeners();
-            botaoCompraCarta.onClick.RemoveAllListeners();
-            controle.TrocaEstado(EstadoCompraBilhete.CreateInstance<EstadoCompraBilhete>());
-        });
+        botaoCompraCarta.onClick.RemoveAllListeners();
+        botaoCompraBilhete.onClick.RemoveAllListeners();
 
         if (controle.Turno <= controle.Jogadores.Count - 1)
         {
             SelecionaBilhete(controle);
+            return;
+        }
+        if (controle.JogadorAtual.isAI)
+        {
+            Debug.Log("Jogador é IA, pulando listeners de botão.");
+            AIController ai = new AIController(controle);
+            ai.ExecuteMainTurnAction();
+        }
+        else
+        {
+
+            Debug.Log("Jogador é Humano, configurando botões.");
+            botaoCompraCarta.onClick.AddListener(() =>
+            {
+                Debug.Log("Botão Compra Carta Clicado");
+                botaoCompraCarta.onClick.RemoveAllListeners();
+                botaoCompraBilhete.onClick.RemoveAllListeners();
+                controle.TrocaEstado(EstadoCompraCarta1.CreateInstance<EstadoCompraCarta1>());
+            });
+
+            botaoCompraBilhete.onClick.AddListener(() =>
+            {
+                Debug.Log("Botão Compra Bilhete Clicado");
+                botaoCompraBilhete.onClick.RemoveAllListeners();
+                botaoCompraCarta.onClick.RemoveAllListeners();
+                controle.TrocaEstado(EstadoCompraBilhete.CreateInstance<EstadoCompraBilhete>());
+            });
+
         }
     }
 
@@ -99,66 +113,104 @@ public class EstadoEspera : EstadoJogo
 
     public void SelecionaBilhete(Controle controle)
     {
-        HideObjects();
-        RectTransform cardBox = mainCanvas.transform.Find("CardBox").GetComponent<RectTransform>();
-        cardBox.gameObject.SetActive(false);
-        RectTransform selectionBox = mainCanvas.transform.Find("SelectionBox").GetComponent<RectTransform>();
-        foreach (Transform child in selectionBox.transform)
-        {
-            Destroy(child.gameObject);
-        }
-        bilhetesInstanciados.Clear();
+
         bilhetesDisponiveis.Clear();
-        bilhetesSelecionados.Clear();
-
-        Button botaoSelect = mainCanvas.transform.Find("BotaoSelect").GetComponent<Button>();
-        botaoSelect.gameObject.SetActive(false);
-
         for (int i = 0; i < 3; i++)
         {
-            bilhetesDisponiveis.Add(controle.DeckBilhetes.CompraBilhete());
+            Bilhete b = controle.DeckBilhetes.CompraBilhete();
+            if (b != null) bilhetesDisponiveis.Add(b);
         }
 
-        foreach (Bilhete bilhete in bilhetesDisponiveis)
+        if (controle.JogadorAtual.isAI)
         {
-            GameObject bilheteObj = Instantiate(prefabBilhete, selectionBox);
-            Button botaoBilhete = bilheteObj.AddComponent<Button>();
-            botaoBilhete.onClick.RemoveAllListeners();
-            botaoBilhete.onClick.AddListener(() =>
-                {
-                    OnBilheteClicked(bilhete, botaoSelect, bilheteObj);
-                });
-            bilheteObj.transform.Find("Origem").GetComponent<TextMeshProUGUI>().text = bilhete.Rota[0];
-            bilheteObj.transform.Find("Destino").GetComponent<TextMeshProUGUI>().text = bilhete.Rota[1];
-            bilheteObj.transform.Find("Pontuacao").GetComponent<TextMeshProUGUI>().text = bilhete.Pontos.ToString();
-            bilhetesInstanciados.Add(bilheteObj);
-        }
-        botaoSelect.onClick.RemoveAllListeners();
-        botaoSelect.onClick.AddListener(() =>
-        {
-            FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
-            foreach (Bilhete bilhete in bilhetesSelecionados)
+
+            AIController ai = new AIController(controle);
+            int minToKeep = (controle.Turno <= controle.Jogadores.Count - 1) ? 2 : 1;
+            List<Bilhete> escolhidos = ai.ChooseTickets(bilhetesDisponiveis, minToKeep);
+
+            foreach (var bilhete in escolhidos)
             {
                 controle.JogadorAtual.MaoBilhetes.Add(bilhete);
             }
-            List<Bilhete> bilhetesRestantes = bilhetesDisponiveis.Except(bilhetesSelecionados).ToList();
-            foreach (Bilhete bilhete in bilhetesRestantes)
+            List<Bilhete> restantes = bilhetesDisponiveis.Except(escolhidos).ToList();
+            foreach (var bilhete in restantes)
             {
                 controle.DeckBilhetes.Deck.Add(bilhete);
             }
+
+            Debug.Log($"AI ({controle.JogadorAtual.Nome}) finalizou a seleção de bilhetes.");
+            _GameManager.Instance.uiHud.AtualizaMainHud(controle);
+            controle.TrocaEstado(EstadoFimTurno.CreateInstance<EstadoFimTurno>());
+        }
+        else
+        {
+
+            HideObjects();
+            RectTransform cardBox = mainCanvas.transform.Find("CardBox").GetComponent<RectTransform>();
+            cardBox.gameObject.SetActive(false); // Esconde a mão de cartas atual
+
+            RectTransform selectionBox = mainCanvas.transform.Find("SelectionBox").GetComponent<RectTransform>();
+            selectionBox.gameObject.SetActive(true);
+
             foreach (Transform child in selectionBox.transform)
             {
                 Destroy(child.gameObject);
             }
             bilhetesInstanciados.Clear();
-            bilhetesDisponiveis.Clear();
             bilhetesSelecionados.Clear();
-            cardBox.gameObject.SetActive(true);
-            ShowObjects();
-            botaoSelect.onClick.RemoveAllListeners();
+
+            Button botaoSelect = mainCanvas.transform.Find("BotaoSelect").GetComponent<Button>();
             botaoSelect.gameObject.SetActive(false);
-            _GameManager.Instance.uiHud.AtualizaMainHud(controle);
-        });
+
+            foreach (Bilhete bilhete in bilhetesDisponiveis)
+            {
+                GameObject bilheteObj = Instantiate(prefabBilhete, selectionBox);
+                Button botaoBilheteObj = bilheteObj.AddComponent<Button>();
+                botaoBilheteObj.onClick.RemoveAllListeners();
+                botaoBilheteObj.onClick.AddListener(() =>
+                    {
+                        OnBilheteClicked(bilhete, botaoSelect, bilheteObj);
+                    });
+                bilheteObj.transform.Find("Origem").GetComponent<TextMeshProUGUI>().text = bilhete.Rota[0];
+                bilheteObj.transform.Find("Destino").GetComponent<TextMeshProUGUI>().text = bilhete.Rota[1];
+                bilheteObj.transform.Find("Pontuacao").GetComponent<TextMeshProUGUI>().text = bilhete.Pontos.ToString();
+                bilhetesInstanciados.Add(bilheteObj);
+            }
+
+            botaoSelect.onClick.RemoveAllListeners();
+            botaoSelect.onClick.AddListener(() =>
+            {
+                FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
+                foreach (Bilhete bilhete in bilhetesSelecionados)
+                {
+                    controle.JogadorAtual.MaoBilhetes.Add(bilhete);
+                }
+                List<Bilhete> bilhetesRestantes = bilhetesDisponiveis.Except(bilhetesSelecionados).ToList();
+                foreach (Bilhete bilhete in bilhetesRestantes)
+                {
+                    controle.DeckBilhetes.Deck.Add(bilhete);
+                }
+                foreach (Transform child in selectionBox.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+
+                selectionBox.gameObject.SetActive(false);
+
+                bilhetesInstanciados.Clear();
+                bilhetesDisponiveis.Clear();
+                bilhetesSelecionados.Clear();
+
+                cardBox.gameObject.SetActive(true);
+                ShowObjects();
+
+                botaoSelect.onClick.RemoveAllListeners();
+                botaoSelect.gameObject.SetActive(false);
+                _GameManager.Instance.uiHud.AtualizaMainHud(controle);
+
+                controle.TrocaEstado(EstadoFimTurno.CreateInstance<EstadoFimTurno>());
+            });
+        }
     }
 
     public void OnBilheteClicked(Bilhete bilhete, Button botaoSelect, GameObject bilheteObj)

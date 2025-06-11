@@ -33,7 +33,14 @@ public class EstadoCompraBilhete : EstadoJogo
         FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
         FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
         FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
-        SelecionaBilhete(controle);
+        if (controle.JogadorAtual.isAI)
+        {
+            SelecionaBilhete(controle);
+        }
+        else
+        {
+            SelecionaBilhete(controle);
+        }
     }
 
     public override void RunEstado(Controle controle)
@@ -53,7 +60,7 @@ public class EstadoCompraBilhete : EstadoJogo
         RectTransform selectionBox = mainCanvas.transform.Find("SelectionBox").GetComponent<RectTransform>();
         foreach (Transform child in selectionBox.transform)
         {
-        Destroy(child.gameObject);
+            Destroy(child.gameObject);
         }
         bilhetesInstanciados.Clear();
         bilhetesDisponiveis.Clear();
@@ -67,49 +74,63 @@ public class EstadoCompraBilhete : EstadoJogo
             bilhetesDisponiveis.Add(controle.DeckBilhetes.CompraBilhete());
         }
 
-        foreach (Bilhete bilhete in bilhetesDisponiveis)
+        if (controle.JogadorAtual.isAI)
         {
-            GameObject bilheteObj = Instantiate(prefabBilhete, selectionBox);
-            Button botaoBilhete = bilheteObj.AddComponent<Button>();
-            botaoBilhete.onClick.RemoveAllListeners();
-            botaoBilhete.onClick.AddListener(() =>
-                {
-                    OnBilheteClicked(bilhete, botaoSelect, bilheteObj);
-                });
-            bilheteObj.transform.Find("Origem").GetComponent<TextMeshProUGUI>().text = bilhete.Rota[0];
-            bilheteObj.transform.Find("Destino").GetComponent<TextMeshProUGUI>().text = bilhete.Rota[1];
-            bilheteObj.transform.Find("Pontuacao").GetComponent<TextMeshProUGUI>().text = bilhete.Pontos.ToString();
-            bilhetesInstanciados.Add(bilheteObj);
-        }
-        botaoSelect.onClick.RemoveAllListeners();
-        botaoSelect.onClick.AddListener(() =>
-        {
-            FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
-            foreach (Bilhete bilhete in bilhetesSelecionados)
-            {
-                controle.JogadorAtual.MaoBilhetes.Add(bilhete);
-            }
-            List<Bilhete> bilhetesRestantes = bilhetesDisponiveis.Except(bilhetesSelecionados).ToList();
-            foreach (Bilhete bilhete in bilhetesRestantes)
-            {
-                controle.DeckBilhetes.Deck.Add(bilhete);
-            }
-            foreach (Transform child in selectionBox.transform)
-            {
-            Destroy(child.gameObject);
-            }
-            bilhetesInstanciados.Clear();
-            bilhetesDisponiveis.Clear();
-            bilhetesSelecionados.Clear();
-            cardBox.gameObject.SetActive(true);
-            ShowObjects();
-            botaoSelect.onClick.RemoveAllListeners();
-            botaoSelect.gameObject.SetActive(false);
-            _GameManager.Instance.uiHud.AtualizaMainHud(controle);
+            AIController ai = new AIController(controle);
+
+            List<Bilhete> escolhidos = ai.ChooseTickets(bilhetesDisponiveis, 1);
+
+
             controle.TrocaEstado(EstadoFimTurno.CreateInstance<EstadoFimTurno>());
-        });
+
+        }
+        else
+        {
+            foreach (Bilhete bilhete in bilhetesDisponiveis)
+            {
+                GameObject bilheteObj = Instantiate(prefabBilhete, selectionBox);
+                Button botaoBilhete = bilheteObj.AddComponent<Button>();
+                botaoBilhete.onClick.RemoveAllListeners();
+                botaoBilhete.onClick.AddListener(() =>
+                    {
+                        OnBilheteClicked(bilhete, botaoSelect, bilheteObj);
+                    });
+                bilheteObj.transform.Find("Origem").GetComponent<TextMeshProUGUI>().text = bilhete.Rota[0];
+                bilheteObj.transform.Find("Destino").GetComponent<TextMeshProUGUI>().text = bilhete.Rota[1];
+                bilheteObj.transform.Find("Pontuacao").GetComponent<TextMeshProUGUI>().text = bilhete.Pontos.ToString();
+                bilhetesInstanciados.Add(bilheteObj);
+            }
+            botaoSelect.onClick.RemoveAllListeners();
+            botaoSelect.onClick.AddListener(() =>
+            {
+                FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
+                foreach (Bilhete bilhete in bilhetesSelecionados)
+                {
+                    controle.JogadorAtual.MaoBilhetes.Add(bilhete);
+                }
+                List<Bilhete> bilhetesRestantes = bilhetesDisponiveis.Except(bilhetesSelecionados).ToList();
+                foreach (Bilhete bilhete in bilhetesRestantes)
+                {
+                    controle.DeckBilhetes.Deck.Add(bilhete);
+                }
+                foreach (Transform child in selectionBox.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+                bilhetesInstanciados.Clear();
+                bilhetesDisponiveis.Clear();
+                bilhetesSelecionados.Clear();
+                cardBox.gameObject.SetActive(true);
+                ShowObjects();
+                botaoSelect.onClick.RemoveAllListeners();
+                botaoSelect.gameObject.SetActive(false);
+                _GameManager.Instance.uiHud.AtualizaMainHud(controle);
+                controle.TrocaEstado(EstadoFimTurno.CreateInstance<EstadoFimTurno>());
+            });
+        }
+
     }
-    
+
     public void OnBilheteClicked(Bilhete bilhete, Button botaoSelect, GameObject bilheteObj)
     {
         FindAnyObjectByType<GameAudioManager>().Play("TicketClick");
@@ -134,7 +155,7 @@ public class EstadoCompraBilhete : EstadoJogo
         //gameBoard.SetActive(false);
         //tracksContainer.SetActive(false);
     }
-    
+
     public void ShowObjects()
     {
         cartasAbertas.gameObject.SetActive(true);
