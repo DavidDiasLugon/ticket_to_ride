@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5184990213184819697}
   - component: {fileID: 2900014202317871615}
   m_Layer: 0
-  m_Name: CityNew
+  m_Name: NewCity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cityName: Atlanta
   textMeshProComponent: {fileID: 5989135263313321891}
+  shapeSpriteRenderer: {fileID: 0}
 --- !u!1 &6532118796798519633
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,8 +82,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0059, y: 1.53}
-  m_SizeDelta: {x: 7, y: 2.8}
+  m_AnchoredPosition: {x: 0.0059, y: 7.1}
+  m_SizeDelta: {x: 33, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &2011783651545661951
 MeshRenderer:
@@ -176,8 +177,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -250,7 +251,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5788038320211993682}
@@ -300,12 +301,12 @@ SpriteRenderer:
   m_SortingLayerID: 304531531
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: dd293f29bdf122c4fb3971459d9acd4e, type: 3}
+  m_Sprite: {fileID: 649223268058989734, guid: 0b9f5b6fe0225154c837db9262c986a5, type: 3}
   m_Color: {r: 0.4862745, g: 0, b: 0.17260075, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

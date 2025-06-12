@@ -148,7 +148,7 @@ public class Controle : ScriptableObject
 
         string[] lines = ticketsTxt.text.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
         List<Bilhete> bilhetes = new List<Bilhete>();
-        foreach(string line in lines)
+        foreach (string line in lines)
         {
             string[] parts = line.Split("_");
             string origem = parts[0].Trim();
@@ -186,9 +186,25 @@ public class Controle : ScriptableObject
     {
         estadoAtual.RunEstado(this);
     }
-    
+
     public void CartaSelecionada(int index, Carta cartaSelecionada)
     {
         estadoAtual.ProcessarSelecao(this, index, cartaSelecionada);
+    }
+
+    public void ConquistarRota(Draggable draggable, TrackController trackController)
+    {
+        if (estadoAtual is EstadoEspera)
+        {
+            EstadoConquista estadoConquista = CreateInstance<EstadoConquista>();
+            estadoConquista.dadosDaConquista = (draggable, trackController);
+            TrocaEstado(estadoConquista);
+        }
+        else
+        {
+            Debug.Log("Não é possível conquistar");
+            FindAnyObjectByType<AudioManager>().Play("FailedConquest");
+            draggable.RetornarParaMao();
+        }
     }
 }

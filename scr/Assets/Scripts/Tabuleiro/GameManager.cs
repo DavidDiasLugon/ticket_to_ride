@@ -4,12 +4,12 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Simulação")]
+    [Header("Simulaï¿½ï¿½o")]
     public int simulatedCurrentPlayerId = 0;
     public Color simulatedPlayer0Color = Color.red;
     public Color simulatedPlayer1Color = Color.blue;
 
-    [Header("Estado de Seleção")]
+    [Header("Estado de Seleï¿½ï¿½o")]
     private TrackController selectedTrack = null; // Guarda o trilho atualmente selecionado
 
     private BoardManager boardManager;
@@ -27,31 +27,31 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // --- Input para TENTAR REIVINDICAR o trilho SELECIONADO (Ex: Tecla Espaço) ---
-        if (Input.GetKeyDown(KeyCode.Space)) // Usa Espaço em vez de P
+        // --- Input para TENTAR REIVINDICAR o trilho SELECIONADO (Ex: Tecla Espaï¿½o) ---
+        if (Input.GetKeyDown(KeyCode.Space)) // Usa Espaï¿½o em vez de P
         {
             if (selectedTrack != null)
             {
-                Debug.Log($"Espaço pressionado - Tentando reivindicar trilho selecionado: {selectedTrack.name} para Jogador Simulado {simulatedCurrentPlayerId}");
+                Debug.Log($"Espaï¿½o pressionado - Tentando reivindicar trilho selecionado: {selectedTrack.name} para Jogador Simulado {simulatedCurrentPlayerId}");
                 ClaimResult result = AttemptClaimTrack(selectedTrack);
 
-                // Desseleciona após a tentativa (bem-sucedida ou não)
-                DeselectCurrentTrack(); // Chama método auxiliar
+                // Desseleciona apï¿½s a tentativa (bem-sucedida ou nï¿½o)
+                DeselectCurrentTrack(); // Chama mï¿½todo auxiliar
 
             }
             else
             {
-                Debug.Log("Espaço pressionado - Nenhum trilho selecionado para reivindicar.");
+                Debug.Log("Espaï¿½o pressionado - Nenhum trilho selecionado para reivindicar.");
                 // Poderia dar um feedback sonoro/visual de "nada selecionado"
             }
         }
 
-        // --- Input para DESELECIONAR (Ex: Clique com Botão Direito ou Clique no Fundo) ---
-        if (Input.GetMouseButtonDown(1)) // Botão direito do mouse
+        // --- Input para DESELECIONAR (Ex: Clique com Botï¿½o Direito ou Clique no Fundo) ---
+        if (Input.GetMouseButtonDown(1)) // Botï¿½o direito do mouse
         {
             if (selectedTrack != null)
             {
-                Debug.Log("Botão direito - Deselecionando trilho.");
+                Debug.Log("Botï¿½o direito - Deselecionando trilho.");
                 DeselectCurrentTrack();
             }
         }
@@ -59,27 +59,27 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Chamado pelo TrackController quando um de seus segmentos é clicado.
-    /// Gerencia a lógica de seleção/desseleção.
+    /// Chamado pelo TrackController quando um de seus segmentos ï¿½ clicado.
+    /// Gerencia a lï¿½gica de seleï¿½ï¿½o/desseleï¿½ï¿½o.
     /// </summary>
     public void SelectTrack(TrackController trackToSelect)
     {
-        // Não pode selecionar um trilho já reivindicado
+        // Nï¿½o pode selecionar um trilho jï¿½ reivindicado
         if (trackToSelect.isClaimed)
         {
-            Debug.Log($"Não pode selecionar trilho '{trackToSelect.name}', já reivindicado.");
+            Debug.Log($"Nï¿½o pode selecionar trilho '{trackToSelect.name}', jï¿½ reivindicado.");
             // Se algo estava selecionado antes, deseleciona
             DeselectCurrentTrack();
             return;
         }
 
-        // Se já estava selecionado, deseleciona (clicar de novo no mesmo)
+        // Se jï¿½ estava selecionado, deseleciona (clicar de novo no mesmo)
         if (selectedTrack == trackToSelect)
         {
             Debug.Log($"Deselecionando '{trackToSelect.name}' por clique repetido.");
             DeselectCurrentTrack();
         }
-        // Se é um trilho diferente do já selecionado (ou se nada estava selecionado)
+        // Se ï¿½ um trilho diferente do jï¿½ selecionado (ou se nada estava selecionado)
         else
         {
             Debug.Log($"Selecionando trilho '{trackToSelect.name}'.");
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Método auxiliar para garantir que qualquer trilho selecionado seja deselecionado.
+    /// Mï¿½todo auxiliar para garantir que qualquer trilho selecionado seja deselecionado.
     /// </summary>
     private void DeselectCurrentTrack()
     {
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public ClaimResult AttemptClaimTrack(TrackController trackToClaim)
     {
-        // Adiciona verificação inicial
+        // Adiciona verificaï¿½ï¿½o inicial
         if (trackToClaim == null)
         {
             Debug.LogError("AttemptClaimTrack chamado com trackToClaim nulo.");
@@ -119,28 +119,28 @@ public class GameManager : MonoBehaviour
 
         Debug.Log($"GameManager processando pedido para: {trackToClaim.gameObject.name}");
 
-        // ... (Restante da lógica de validação: isClaimed, DoubleTrackRule, simulação de cartas) ...
-        // ... (COMO NO CÓDIGO ANTERIOR) ...
+        // ... (Restante da lï¿½gica de validaï¿½ï¿½o: isClaimed, DoubleTrackRule, simulaï¿½ï¿½o de cartas) ...
+        // ... (COMO NO Cï¿½DIGO ANTERIOR) ...
 
-        // 3. Verificar se o trilho já foi reivindicado (já feito na seleção, mas bom verificar de novo)
+        // 3. Verificar se o trilho jï¿½ foi reivindicado (jï¿½ feito na seleï¿½ï¿½o, mas bom verificar de novo)
         if (trackToClaim.isClaimed)
         {
-            Debug.Log($"Falha: Trilha '{trackToClaim.name}' já reivindicada por Player {trackToClaim.ownerPlayerId}.");
-            // Garante deseleção se o estado mudou inesperadamente
+            Debug.Log($"Falha: Trilha '{trackToClaim.name}' jï¿½ reivindicada por Player {trackToClaim.ownerPlayerName}.");
+            // Garante deseleï¿½ï¿½o se o estado mudou inesperadamente
             DeselectCurrentTrack();
             return ClaimResult.Fail_AlreadyClaimed;
         }
 
-        // 4. Verificar regras de Trilha Dupla (COMO NO CÓDIGO ANTERIOR)
-        // ... (código da validação de trilha dupla) ...
+        // 4. Verificar regras de Trilha Dupla (COMO NO Cï¿½DIGO ANTERIOR)
+        // ... (cï¿½digo da validaï¿½ï¿½o de trilha dupla) ...
         if (trackToClaim.trackData.isDoubleTrack)
         {
-            // ... (lógica para encontrar gêmeo e verificar) ...
+            // ... (lï¿½gica para encontrar gï¿½meo e verificar) ...
             // if (falhou_regra_dupla) { DeselectCurrentTrack(); return ClaimResult.Fail_DoubleTrackRule; }
         }
 
-        // 5. Simulação de validação de cartas/peças (COMO NO CÓDIGO ANTERIOR)
-        bool hasEnoughResources = true; // Simulação
+        // 5. Simulaï¿½ï¿½o de validaï¿½ï¿½o de cartas/peï¿½as (COMO NO Cï¿½DIGO ANTERIOR)
+        bool hasEnoughResources = true; // Simulaï¿½ï¿½o
         if (!hasEnoughResources)
         {
             DeselectCurrentTrack();
@@ -148,29 +148,29 @@ public class GameManager : MonoBehaviour
         }
 
 
-        // === Tudo OK - Processar Reivindicação ===
-        // ... (Obter playerIdToClaim e playerColorToClaim da simulação, como antes) ...
-        int playerIdToClaim = simulatedCurrentPlayerId;
+        // === Tudo OK - Processar Reivindicaï¿½ï¿½o ===
+        // ... (Obter playerIdToClaim e playerColorToClaim da simulaï¿½ï¿½o, como antes) ...
+        //string playerIdToClaim = simulatedCurrentPlayerId;
         Color playerColorToClaim = (simulatedCurrentPlayerId == 0) ? simulatedPlayer0Color : simulatedPlayer1Color;
 
 
-        // --- Ações Reais Comentadas (COMO NO CÓDIGO ANTERIOR) ---
+        // --- Aï¿½ï¿½es Reais Comentadas (COMO NO Cï¿½DIGO ANTERIOR) ---
         /*
          * Remover Cartas
-         * Deduzir Peças
+         * Deduzir Peï¿½as
          * Adicionar Pontos
          * Atualizar UI
         */
 
-        // Chamar o Claim no TrackController (Lógica Ativa)
-        trackToClaim.Claim(playerIdToClaim, playerColorToClaim);
-        Debug.Log($"Trilha {trackToClaim.name} reivindicada com sucesso por Jogador Simulado {playerIdToClaim}.");
+        // Chamar o Claim no TrackController (Lï¿½gica Ativa)
+        //trackToClaim.Claim(playerIdToClaim, playerColorToClaim);
+        //Debug.Log($"Trilha {trackToClaim.name} reivindicada com sucesso por Jogador Simulado {playerIdToClaim}.");
 
         // Passar o turno (Simulado)
         simulatedCurrentPlayerId = (simulatedCurrentPlayerId + 1) % 2; // Alterna 0 e 1
-        Debug.Log($"Próximo jogador simulado é: {simulatedCurrentPlayerId}");
+        Debug.Log($"Prï¿½ximo jogador simulado ï¿½: {simulatedCurrentPlayerId}");
 
-        // Retorna sucesso (a deseleção já foi chamada no Update após esta chamada)
+        // Retorna sucesso (a deseleï¿½ï¿½o jï¿½ foi chamada no Update apï¿½s esta chamada)
         return ClaimResult.Success;
     }
 

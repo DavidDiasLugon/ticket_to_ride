@@ -22,7 +22,7 @@ public class EstadoCompraBilhete : EstadoJogo
     public override void IniciarEstado(Controle controle)
     {
         mainCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        prefabBilhete = Resources.Load<GameObject>("Prefabs/Carta/Bilhete");
+        prefabBilhete = Resources.Load<GameObject>("Prefabs/Carta/BilheteNew");
 
         cartasAbertas = mainCanvas.transform.Find("CartasAbertas").GetComponent<RectTransform>();
         botaoCarta = mainCanvas.transform.Find("BotaoCarta").GetComponent<Button>();
@@ -30,9 +30,9 @@ public class EstadoCompraBilhete : EstadoJogo
 
         gameBoard = GameObject.Find("GameBoard");
         tracksContainer = GameObject.Find("TracksContainer");
-        FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
-        FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
-        FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
+        FindAnyObjectByType<AudioManager>().Play("DrawCard");
+        FindAnyObjectByType<AudioManager>().Play("DrawCard");
+        FindAnyObjectByType<AudioManager>().Play("DrawCard");
         SelecionaBilhete(controle);
     }
 
@@ -70,6 +70,13 @@ public class EstadoCompraBilhete : EstadoJogo
         foreach (Bilhete bilhete in bilhetesDisponiveis)
         {
             GameObject bilheteObj = Instantiate(prefabBilhete, selectionBox);
+
+            BilheteHover bilheteHover = bilheteObj.GetComponent<BilheteHover>();
+            if (bilheteHover != null)
+            {
+                bilheteHover.Inicializacao(bilhete.Rota[0], bilhete.Rota[1]);
+            }
+
             Button botaoBilhete = bilheteObj.AddComponent<Button>();
             botaoBilhete.onClick.RemoveAllListeners();
             botaoBilhete.onClick.AddListener(() =>
@@ -84,7 +91,7 @@ public class EstadoCompraBilhete : EstadoJogo
         botaoSelect.onClick.RemoveAllListeners();
         botaoSelect.onClick.AddListener(() =>
         {
-            FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
+            FindAnyObjectByType<AudioManager>().Play("DrawCard");
             foreach (Bilhete bilhete in bilhetesSelecionados)
             {
                 controle.JogadorAtual.MaoBilhetes.Add(bilhete);
@@ -112,7 +119,7 @@ public class EstadoCompraBilhete : EstadoJogo
     
     public void OnBilheteClicked(Bilhete bilhete, Button botaoSelect, GameObject bilheteObj)
     {
-        FindAnyObjectByType<GameAudioManager>().Play("TicketClick");
+        FindAnyObjectByType<AudioManager>().Play("TicketClick");
         if (bilhetesSelecionados.Contains(bilhete))
         {
             bilheteObj.transform.localScale = new Vector3(1f, 1f, 1f);
