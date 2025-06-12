@@ -25,6 +25,7 @@ public class EstadoEspera2 : EstadoJogo
 
     public override void ProcessarSelecao(Controle controle, int indice, Carta cartaSelecionada)
     {
+        FindAnyObjectByType<AudioManager>().Play("DrawCard");
         Debug.Log("Processando seleção de carta");
         controle.JogadorAtual.MaoCartas.Add(cartaSelecionada);
         controle.CartasAbertas.RemoveAt(indice);

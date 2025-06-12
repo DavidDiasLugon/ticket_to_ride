@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc0a84936a83c444b7158146fecd476, type: 3}
   m_Name: Track_SantaFe_OklahomaCity_Blue
   m_EditorClassIdentifier: 
-  city1Name: "Santa F\xE9"
+  city1Name: Santa Fe
   city2Name: Oklahoma City
   length: 3
   color: 2
+  isDoubleTrack: 0
+  twinTrack: {fileID: 0}

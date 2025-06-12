@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Track_Seattle_Calcary_Gray
   m_EditorClassIdentifier: 
   city1Name: Seattle
-  city2Name: Calcary
+  city2Name: Calgary
   length: 4
   color: 0
+  isDoubleTrack: 0
+  twinTrack: {fileID: 0}

@@ -4,21 +4,23 @@ using System.Linq; // Usado para .Any() - opcional
 
 public class BoardManager : MonoBehaviour
 {
-    [Header("Referências do Editor")]
+    [Header("Referï¿½ncias do Editor")]
     [Tooltip("Arraste aqui TODOS os assets ScriptableObject de TrackData do seu projeto.")]
     public List<TrackData> allTrackData;
+
+    public static List<TrackController> AllTrackControllers { get; private set; }
 
     [Tooltip("Arraste aqui o Prefab do segmento de trilha (que tem TrackSegmentController).")]
     public GameObject trackSegmentPrefab;
 
-    [Tooltip("Opcional: Arraste um GameObject da cena para ser o pai de todos os trilhos criados (para organização).")]
+    [Tooltip("Opcional: Arraste um GameObject da cena para ser o pai de todos os trilhos criados (para organizaï¿½ï¿½o).")]
     public Transform tracksParent;
 
-    // --- Referências Internas ---
-    // Dicionário para acesso rápido às cidades pelo nome
-    private Dictionary<string, CityController> cities = new Dictionary<string, CityController>();
+    // --- Referï¿½ncias Internas ---
+    // Dicionï¿½rio para acesso rï¿½pido ï¿½s cidades pelo nome
+    public static Dictionary<string, CityController> Cities = new Dictionary<string, CityController>();
 
-    // Lista para guardar referências a todos os TrackControllers criados (se precisar acessá-los depois)
+    // Lista para guardar referï¿½ncias a todos os TrackControllers criados (se precisar acessï¿½-los depois)
     private List<TrackController> allTrackControllers = new List<TrackController>();
 
     // ========================================================================
@@ -27,44 +29,44 @@ public class BoardManager : MonoBehaviour
 
     void Start()
     {
-        // 1. Encontrar todas as cidades e colocá-las no dicionário
+        // 1. Encontrar todas as cidades e colocï¿½-las no dicionï¿½rio
         PopulateCityDictionary();
 
         // 2. Criar os trilhos visuais com base nos TrackData
         CreateAllTracks();
 
-        Debug.Log("BoardManager concluído. Cidades encontradas: " + cities.Count + ", Trilhos criados: " + allTrackControllers.Count);
+        Debug.Log("BoardManager concluï¿½do. Cidades encontradas: " + Cities.Count + ", Trilhos criados: " + allTrackControllers.Count);
     }
 
     // ========================================================================
-    // Métodos de Inicialização
+    // Mï¿½todos de Inicializaï¿½ï¿½o
     // ========================================================================
 
     /// <summary>
-    /// Encontra todos os CityController na cena e os armazena em um dicionário para acesso rápido.
+    /// Encontra todos os CityController na cena e os armazena em um dicionï¿½rio para acesso rï¿½pido.
     /// </summary>
     void PopulateCityDictionary()
     {
-        cities.Clear();
+        Cities.Clear();
         // Encontra todos os componentes CityController ativos na cena
         CityController[] foundCities = FindObjectsByType<CityController>(FindObjectsSortMode.None);
 
         foreach (CityController city in foundCities)
         {
-            // Verifica se o nome da cidade não é vazio e se já não existe no dicionário
-            if (!string.IsNullOrEmpty(city.cityName) && !cities.ContainsKey(city.cityName))
+            // Verifica se o nome da cidade nï¿½o ï¿½ vazio e se jï¿½ nï¿½o existe no dicionï¿½rio
+            if (!string.IsNullOrEmpty(city.cityName) && !Cities.ContainsKey(city.cityName))
             {
-                cities.Add(city.cityName, city);
+                Cities.Add(city.cityName, city);
             }
             else
             {
-                Debug.LogWarning($"Cidade com nome inválido ou duplicado encontrada: '{city.cityName}' no GameObject '{city.gameObject.name}'. Ignorando.", city.gameObject);
+                Debug.LogWarning($"Cidade com nome invï¿½lido ou duplicado encontrada: '{city.cityName}' no GameObject '{city.gameObject.name}'. Ignorando.", city.gameObject);
             }
         }
 
-        if (cities.Count == 0)
+        if (Cities.Count == 0)
         {
-            Debug.LogError("Nenhuma cidade (CityController) encontrada na cena! Verifique se os GameObjects das cidades têm o script CityController e nomes definidos.");
+            Debug.LogError("Nenhuma cidade (CityController) encontrada na cena! Verifique se os GameObjects das cidades tï¿½m o script CityController e nomes definidos.");
         }
     }
 
@@ -73,26 +75,26 @@ public class BoardManager : MonoBehaviour
     /// </summary>
     void CreateAllTracks()
     {
-        // Verificações iniciais essenciais
+        // Verificaï¿½ï¿½es iniciais essenciais
         if (trackSegmentPrefab == null)
         {
-            Debug.LogError("Prefab do Segmento de Trilha (trackSegmentPrefab) não foi atribuído no Inspector do BoardManager!", this.gameObject);
+            Debug.LogError("Prefab do Segmento de Trilha (trackSegmentPrefab) nï¿½o foi atribuï¿½do no Inspector do BoardManager!", this.gameObject);
             return;
         }
-        // Verifica se o prefab tem o script necessário
+        // Verifica se o prefab tem o script necessï¿½rio
         if (trackSegmentPrefab.GetComponent<TrackSegmentController>() == null)
         {
-            Debug.LogError($"O prefab '{trackSegmentPrefab.name}' não tem o componente TrackSegmentController anexado!", trackSegmentPrefab);
+            Debug.LogError($"O prefab '{trackSegmentPrefab.name}' nï¿½o tem o componente TrackSegmentController anexado!", trackSegmentPrefab);
             return;
         }
-        if (allTrackData == null || allTrackData.Count == 0 || allTrackData.All(item => item == null)) // .All é do Linq, verifica se todos são nulos
+        if (allTrackData == null || allTrackData.Count == 0 || allTrackData.All(item => item == null)) // .All ï¿½ do Linq, verifica se todos sï¿½o nulos
         {
-            Debug.LogError("A lista 'All Track Data' no BoardManager está vazia ou contém apenas itens nulos. Arraste seus assets TrackData para a lista no Inspector.", this.gameObject);
+            Debug.LogError("A lista 'All Track Data' no BoardManager estï¿½ vazia ou contï¿½m apenas itens nulos. Arraste seus assets TrackData para a lista no Inspector.", this.gameObject);
             return;
         }
-        if (cities.Count == 0)
+        if (Cities.Count == 0)
         {
-            Debug.LogError("Não é possível criar trilhos pois nenhuma cidade foi encontrada. Verifique o método PopulateCityDictionary e os GameObjects das cidades.");
+            Debug.LogError("Nï¿½o ï¿½ possï¿½vel criar trilhos pois nenhuma cidade foi encontrada. Verifique o mï¿½todo PopulateCityDictionary e os GameObjects das cidades.");
             return;
         }
 
@@ -121,31 +123,31 @@ public class BoardManager : MonoBehaviour
             }
 
 
-            // Encontrar os GameObjects / posições das cidades de início e fim
-            if (!cities.TryGetValue(data.city1Name, out CityController city1))
+            // Encontrar os GameObjects / posiï¿½ï¿½es das cidades de inï¿½cio e fim
+            if (!Cities.TryGetValue(data.city1Name, out CityController city1))
             {
-                Debug.LogError($"Não foi possível encontrar a cidade '{data.city1Name}' definida no TrackData '{data.name}'. Verifique se o nome está correto e se a cidade existe na cena com CityController.", data);
-                continue; // Pula este trilho se não encontrar a cidade
+                Debug.LogError($"Nï¿½o foi possï¿½vel encontrar a cidade '{data.city1Name}' definida no TrackData '{data.name}'. Verifique se o nome estï¿½ correto e se a cidade existe na cena com CityController.", data);
+                continue; // Pula este trilho se nï¿½o encontrar a cidade
             }
-            if (!cities.TryGetValue(data.city2Name, out CityController city2))
+            if (!Cities.TryGetValue(data.city2Name, out CityController city2))
             {
-                Debug.LogError($"Não foi possível encontrar a cidade '{data.city2Name}' definida no TrackData '{data.name}'. Verifique se o nome está correto e se a cidade existe na cena com CityController.", data);
+                Debug.LogError($"Nï¿½o foi possï¿½vel encontrar a cidade '{data.city2Name}' definida no TrackData '{data.name}'. Verifique se o nome estï¿½ correto e se a cidade existe na cena com CityController.", data);
                 continue; // Pula este trilho
             }
 
             Vector3 startPos = city1.transform.position;
             Vector3 endPos = city2.transform.position;
 
-            Vector3 trackOffset = Vector3.zero; // Deslocamento padrão é zero
+            Vector3 trackOffset = Vector3.zero; // Deslocamento padrï¿½o ï¿½ zero
             if (data.isDoubleTrack && data.twinTrack != null)
             {
-                // Calcula a direção do trilho
+                // Calcula a direï¿½ï¿½o do trilho
                 Vector3 direction = (endPos - startPos).normalized;
                 // Calcula um vetor perpendicular (para o deslocamento lateral)
-                Vector3 perpendicular = new Vector3(-direction.y, direction.x, 0) * 0.2f; // O valor 0.2f é a distância do deslocamento, ajuste conforme necessário
+                Vector3 perpendicular = new Vector3(-direction.y, direction.x, 0) * 0.2f; // O valor 0.2f ï¿½ a distï¿½ncia do deslocamento, ajuste conforme necessï¿½rio
 
-                // Para garantir que os gêmeos se desloquem em direções opostas de forma consistente,
-                // usamos o nome dos objetos para decidir a direção do deslocamento.
+                // Para garantir que os gï¿½meos se desloquem em direï¿½ï¿½es opostas de forma consistente,
+                // usamos o nome dos objetos para decidir a direï¿½ï¿½o do deslocamento.
                 // Isso evita que ambos se desloquem para o mesmo lado.
                 if (string.Compare(data.name, data.twinTrack.name) > 0)
                 {
@@ -156,9 +158,9 @@ public class BoardManager : MonoBehaviour
                     trackOffset = -perpendicular;
                 }
             }
-            // --- Criação do GameObject Pai para o Trilho ---
+            // --- Criaï¿½ï¿½o do GameObject Pai para o Trilho ---
             GameObject trackParentObj = new GameObject($"Track_{data.city1Name}_{data.city2Name}_{data.color}");
-            trackParentObj.transform.position = (startPos + endPos) / 2f; // Posição central (útil para gizmos, etc)
+            trackParentObj.transform.position = (startPos + endPos) / 2f; // Posiï¿½ï¿½o central (ï¿½til para gizmos, etc)
 
             // Organizar na hierarquia sob o pai opcional 'tracksParent'
             if (tracksParent != null)
@@ -168,31 +170,31 @@ public class BoardManager : MonoBehaviour
 
             // Adicionar e configurar o TrackController
             TrackController trackController = trackParentObj.AddComponent<TrackController>();
-            List<TrackSegmentController> currentSegments = new List<TrackSegmentController>(); // Lista temporária para os segmentos deste trilho
+            List<TrackSegmentController> currentSegments = new List<TrackSegmentController>(); // Lista temporï¿½ria para os segmentos deste trilho
 
-            // --- Instanciação dos Segmentos Visuais ---
+            // --- Instanciaï¿½ï¿½o dos Segmentos Visuais ---
             if (data.length <= 0)
             {
-                Debug.LogWarning($"TrackData '{data.name}' tem comprimento inválido ({data.length}). Definindo para 1.", data);
-                data.length = 1; // Correção simples
+                Debug.LogWarning($"TrackData '{data.name}' tem comprimento invï¿½lido ({data.length}). Definindo para 1.", data);
+                data.length = 1; // Correï¿½ï¿½o simples
             }
 
             for (int i = 0; i < data.length; i++)
             {
-                // Calcular a posição do segmento ao longo da linha (interpolação linear)
+                // Calcular a posiï¿½ï¿½o do segmento ao longo da linha (interpolaï¿½ï¿½o linear)
                 float t = (float)(i + 0.5f) / data.length; // Ponto central de cada passo do segmento
                 Vector3 segmentPosition = Vector3.Lerp(startPos, endPos, t) + trackOffset;
 
-                // Calcular a rotação para alinhar o segmento com a direção do trilho
-                Vector3 direction = (endPos - startPos); // Não normalizar ainda se precisar para Atan2
-                if (direction == Vector3.zero) direction = Vector3.right; // Evitar divisão por zero se cidades estiverem no mesmo lugar
+                // Calcular a rotaï¿½ï¿½o para alinhar o segmento com a direï¿½ï¿½o do trilho
+                Vector3 direction = (endPos - startPos); // Nï¿½o normalizar ainda se precisar para Atan2
+                if (direction == Vector3.zero) direction = Vector3.right; // Evitar divisï¿½o por zero se cidades estiverem no mesmo lugar
 
-                // Opção 1: Usando LookRotation (bom se o 'up' do sprite for o topo do vagão)
+                // Opï¿½ï¿½o 1: Usando LookRotation (bom se o 'up' do sprite for o topo do vagï¿½o)
                 Quaternion segmentRotation = Quaternion.LookRotation(Vector3.forward, direction.normalized);
 
-                // Opção 2: Usando Atan2 (bom se o 'right' (eixo X) do sprite for a direção do vagão)
+                // Opï¿½ï¿½o 2: Usando Atan2 (bom se o 'right' (eixo X) do sprite for a direï¿½ï¿½o do vagï¿½o)
                 // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                // Quaternion segmentRotation = Quaternion.Euler(0, 0, angle); // Ajuste o -90f se necessário dependendo da orientação original do sprite
+                // Quaternion segmentRotation = Quaternion.Euler(0, 0, angle); // Ajuste o -90f se necessï¿½rio dependendo da orientaï¿½ï¿½o original do sprite
 
                 // Instanciar o prefab do segmento
                 GameObject segmentObj = Instantiate(trackSegmentPrefab, segmentPosition, segmentRotation);
@@ -201,38 +203,39 @@ public class BoardManager : MonoBehaviour
                 // Tornar o segmento filho do GameObject pai do trilho
                 segmentObj.transform.SetParent(trackParentObj.transform);
 
-                // Obter o controller do segmento e adicionar à lista
+                // Obter o controller do segmento e adicionar ï¿½ lista
                 TrackSegmentController segmentController = segmentObj.GetComponent<TrackSegmentController>();
                 if (segmentController != null)
                 {
                     currentSegments.Add(segmentController);
-                    // Opcional: passar o índice, se precisar dele no segmento
+                    // Opcional: passar o ï¿½ndice, se precisar dele no segmento
                     // segmentController.segmentIndex = i;
                 }
                 else
                 {
-                    // Este erro não deveria acontecer se a verificação inicial do prefab passou
-                    Debug.LogError($"Instância do prefab {trackSegmentPrefab.name} não contém o script TrackSegmentController!", segmentObj);
+                    // Este erro nï¿½o deveria acontecer se a verificaï¿½ï¿½o inicial do prefab passou
+                    Debug.LogError($"Instï¿½ncia do prefab {trackSegmentPrefab.name} nï¿½o contï¿½m o script TrackSegmentController!", segmentObj);
                 }
             } // Fim do loop de segmentos
 
-            // --- Finalização do TrackController ---
+            // --- Finalizaï¿½ï¿½o do TrackController ---
             // Inicializa o TrackController com seus dados e a lista de segmentos que acabamos de criar
             trackController.Initialize(data, currentSegments);
 
-            // Adiciona o controller do trilho à lista principal (se precisar referenciá-los depois)
+            // Adiciona o controller do trilho ï¿½ lista principal (se precisar referenciï¿½-los depois)
             allTrackControllers.Add(trackController);
 
         } // Fim do loop de TrackData
+        AllTrackControllers = this.allTrackControllers;
     }
 
     // ========================================================================
-    // Métodos Públicos (Exemplos - Adicionar conforme necessário)
+    // Mï¿½todos Pï¿½blicos (Exemplos - Adicionar conforme necessï¿½rio)
     // ========================================================================
 
     /// <summary>
-    /// Encontra um TrackController específico (ex: para lógica de gêmeos).
-    /// Pode ser ineficiente se chamado frequentemente; considere um dicionário se necessário.
+    /// Encontra um TrackController especï¿½fico (ex: para lï¿½gica de gï¿½meos).
+    /// Pode ser ineficiente se chamado frequentemente; considere um dicionï¿½rio se necessï¿½rio.
     /// </summary>
     public TrackController FindTrackControllerForData(TrackData dataToFind)
     {
@@ -243,7 +246,7 @@ public class BoardManager : MonoBehaviour
                 return tc;
             }
         }
-        return null; // Não encontrado
+        return null; // Nï¿½o encontrado
     }
 
 }

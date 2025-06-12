@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,9 +21,16 @@ public class DeckBilhetes : ScriptableObject
 
     public Bilhete CompraBilhete()
     {
-        Bilhete bilheteComprado = deckBilhetes[0];
-        deckBilhetes.RemoveAt(0);
-        return bilheteComprado;
+        if (deckBilhetes.Count > 0)
+        {
+            Bilhete bilheteComprado = deckBilhetes[0];
+            deckBilhetes.RemoveAt(0);
+            return bilheteComprado;
+        }
+        else
+        {
+            throw new InvalidOperationException("Tentativa de comprar um bilhete de um baralho vazio.");
+        }
     }
 
     public void Add(Bilhete b)

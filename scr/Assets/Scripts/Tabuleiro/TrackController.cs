@@ -7,7 +7,7 @@ public class TrackController : MonoBehaviour
     public TrackData trackData;
     public List<TrackSegmentController> segments = new List<TrackSegmentController>();
     public bool isClaimed { get; private set; } = false;
-    public int ownerPlayerId { get; private set; } = -1;
+    public string ownerPlayerName { get; private set; } = "";
 
     private GameManager gameManager;
     private bool isSelected = false; // Novo estado: este trilho est� selecionado?
@@ -89,13 +89,13 @@ public class TrackController : MonoBehaviour
 
 
     // Chamado pelo GameManager AP�S validar a reivindica��o
-    public void Claim(int playerId, Color playerColor)
+    public void Claim(string playerName, Color playerColor)
     {
         if (isClaimed) return;
         isClaimed = true;
         isSelected = false;
-        ownerPlayerId = playerId;
-        Debug.Log($"Trilho {gameObject.name} reivindicado pelo Player {playerId}");
+        ownerPlayerName = playerName;
+        Debug.Log($"Trilho {gameObject.name} reivindicado pelo Player {playerName}");
 
         // Aumenta a ordem para ficar na frente de trilhos n�o reivindicados na mesma Y
         int sortOrder = Mathf.RoundToInt(-transform.position.y * 10) + 1;
@@ -112,7 +112,7 @@ public class TrackController : MonoBehaviour
     {
         if (!isClaimed) return;
         isClaimed = false;
-        ownerPlayerId = -1;
+        ownerPlayerName = "";
         isSelected = false;
         Debug.Log($"Trilho {gameObject.name} liberado.");
 

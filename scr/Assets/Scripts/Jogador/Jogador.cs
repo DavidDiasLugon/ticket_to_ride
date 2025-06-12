@@ -12,11 +12,18 @@ public class Jogador : ScriptableObject
     private List<Carta> maoCartas = new List<Carta>();
     private Dictionary<string, int> cartaNmr = new Dictionary<string, int>();
     private List<Bilhete> maoBilhetes = new List<Bilhete>();
+    private bool selecionouBilhetes = false;
 
     public string Nome
     {
         get => nome;
         set => nome = value;
+    }
+
+    public bool SelecionouBilhetes
+    {
+        get => selecionouBilhetes;
+        set => selecionouBilhetes = value;
     }
 
     public Dictionary<string, int> CartaNmr
@@ -72,6 +79,18 @@ public class Jogador : ScriptableObject
         {
             cartaNmr[cor] = maoCartas.Count(carta => carta.Cor == cor);
         }
-        
+    }
+
+    public void RemoverCartasPorCor(string cor, int quantidade, Controle controle)
+    {
+        if (quantidade <= 0) return;
+
+        List<Carta> cartasARemover = maoCartas.Where(carta => carta.Cor == cor).Take(quantidade).ToList();
+        foreach (Carta carta in cartasARemover)
+        {
+            maoCartas.Remove(carta);
+            controle.DeckCartas.Add(carta);
+        }
+        UpdateNumeroCartasDict();
     }
 }

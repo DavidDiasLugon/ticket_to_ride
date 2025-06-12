@@ -47,6 +47,11 @@ public class UIMao : MonoBehaviour
                 {
                     textoQtd.text = "";
                 }
+                Draggable draggable = cartaObj.GetComponent<Draggable>();
+                if (draggable != null)
+                {
+                    draggable.corCarta = cor;
+                }
                 cartasInstanciadas.Add(cartaObj);
             }
         }

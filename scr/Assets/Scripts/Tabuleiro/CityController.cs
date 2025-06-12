@@ -1,19 +1,34 @@
 using TMPro;
-using UnityEngine; // Provavelmente já existe
+using UnityEngine; // Provavelmente jï¿½ existe
 
 public class CityController : MonoBehaviour
 {
-    public string cityName = "Nome Padrão da Cidade"; // O nome da sua cidade
+    public string cityName = "Nome Padrï¿½o da Cidade"; // O nome da sua cidade
 
-    // Referência para o componente TextMeshPro no objeto filho (ou no mesmo objeto, dependendo de onde adicionou)
+    // Referï¿½ncia para o componente TextMeshPro no objeto filho (ou no mesmo objeto, dependendo de onde adicionou)
     [SerializeField] private TextMeshPro textMeshProComponent;
+
+    public SpriteRenderer shapeSpriteRenderer; // Referencia para o SpriteRenderer do shape da cidade
+    private Color originalColor;
+
+    void Awake()
+    {
+        if (shapeSpriteRenderer != null)
+        {
+            originalColor = shapeSpriteRenderer.color; // Guarda a cor original do shape
+        }
+        else
+        {
+            Debug.LogWarning("Shape SpriteRenderer not assigned in CityController.", this.gameObject);
+        }
+    }
 
     void Start()
     {
-        // Tenta encontrar o componente automaticamente no filho se não for atribuído
+        // Tenta encontrar o componente automaticamente no filho se nï¿½o for atribuï¿½do
         if (textMeshProComponent == null)
         {
-            // Procura no mesmo objeto E nos filhos. Ajuste se necessário.
+            // Procura no mesmo objeto E nos filhos. Ajuste se necessï¿½rio.
             textMeshProComponent = GetComponentInChildren<TextMeshPro>();
         }
 
@@ -21,7 +36,7 @@ public class CityController : MonoBehaviour
         UpdateCityNameDisplay();
     }
 
-    // Função para atualizar o texto (pode ser chamada se o nome mudar)
+    // Funï¿½ï¿½o para atualizar o texto (pode ser chamada se o nome mudar)
     public void UpdateCityNameDisplay()
     {
         if (textMeshProComponent != null)
@@ -34,7 +49,20 @@ public class CityController : MonoBehaviour
         }
     }
 
-    // Opcional: Atualizar no editor quando o nome muda para visualização
+    public void Destacar(bool destacar, Color corDestaque)
+    {
+        if (shapeSpriteRenderer == null) return;
+        if (destacar)
+        {
+            shapeSpriteRenderer.color = corDestaque;
+        }
+        else
+        {
+            shapeSpriteRenderer.color = originalColor;
+        }
+    }
+
+    // Opcional: Atualizar no editor quando o nome muda para visualizaï¿½ï¿½o
 #if UNITY_EDITOR
     void OnValidate()
     {

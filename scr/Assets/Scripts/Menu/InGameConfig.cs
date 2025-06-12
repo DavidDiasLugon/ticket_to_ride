@@ -12,6 +12,13 @@ public class InGameConfig : MonoBehaviour
     public void QuitToMainMenu()
     {
         Debug.Log("Voltando ao menu principal...");
-        SceneManager.LoadScene("Menu");
+        GameSettings.jogadores.Clear();
+        GameSettings.vencedor = null;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ClickSound()
+    {
+        FindAnyObjectByType<AudioManager>().Play("Click");
     }
 }

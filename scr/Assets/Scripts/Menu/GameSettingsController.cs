@@ -37,6 +37,7 @@ public class GameSettingsController : MonoBehaviour
 
             toggle.onValueChanged.AddListener((bool isOn) =>
             {
+                FindAnyObjectByType<AudioManager>().Play("Click");
                 SetColor(toggle, targetImage, isOn);
                 UpdateStartButton();
 

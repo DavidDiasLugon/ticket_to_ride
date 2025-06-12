@@ -23,6 +23,14 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        float master = PlayerPrefs.GetFloat("MasterVolume", 0.75f);
+        float music = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
+        float sfx = PlayerPrefs.GetFloat("SFXVolume", 0.75f);
+
+        SetMasterVolume(master);
+        SetMusicVolume(music);
+        SetSFXVolume(sfx);
+        
         Play("Music");
     }
 
@@ -35,43 +43,25 @@ public class AudioManager : MonoBehaviour
     public void SetMusicVolume(float sliderValue)
     {
         string exposedParameterName = "Music";
-        if (sliderValue <= 0.0001f)
-        {
-            mainMixer.SetFloat(exposedParameterName, -80f);
-        }
-        else
-        {
-            float dbValue = Mathf.Log10(sliderValue) * 20;
-            mainMixer.SetFloat(exposedParameterName, dbValue);
-        }
+        float dbValue = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
+        mainMixer.SetFloat(exposedParameterName, dbValue);
+        PlayerPrefs.SetFloat("MusicVolume", sliderValue);
     }
 
     public void SetSFXVolume(float sliderValue)
     {
 
         string exposedParameterName = "SoundEffects";
-        if (sliderValue <= 0.0001f)
-        {
-            mainMixer.SetFloat(exposedParameterName, -80f);
-        }
-        else
-        {
-            float dbValue = Mathf.Log10(sliderValue) * 20;
-            mainMixer.SetFloat(exposedParameterName, dbValue);
-        }
+        float dbValue = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
+        mainMixer.SetFloat(exposedParameterName, dbValue);
+        PlayerPrefs.SetFloat("SFXVolume", sliderValue);
     }
-    
+
     public void SetMasterVolume(float sliderValue)
     {
         string exposedParameterName = "Master";
-        if (sliderValue <= 0.0001f)
-        {
-            mainMixer.SetFloat(exposedParameterName, -80f);
-        }
-        else
-        {
-            float dbValue = Mathf.Log10(sliderValue) * 20;
-            mainMixer.SetFloat(exposedParameterName, dbValue);
-        }
+        float dbValue = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
+        mainMixer.SetFloat(exposedParameterName, dbValue);
+        PlayerPrefs.SetFloat("MasterVolume", sliderValue);
     }
 }

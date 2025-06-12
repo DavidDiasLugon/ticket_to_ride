@@ -27,7 +27,7 @@ public class EstadoEspera : EstadoJogo
     public override void IniciarEstado(Controle controle)
     {
         mainCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        prefabBilhete = Resources.Load<GameObject>("Prefabs/Carta/Bilhete");
+        prefabBilhete = Resources.Load<GameObject>("Prefabs/Carta/BilheteNew");
 
         cartasAbertas = mainCanvas.transform.Find("CartasAbertas").GetComponent<RectTransform>();
         botaoCarta = mainCanvas.transform.Find("BotaoCarta").GetComponent<Button>();
@@ -49,7 +49,7 @@ public class EstadoEspera : EstadoJogo
             Debug.LogError("Botões de compra não encontrados!");
             return;
         }
-
+        botaoCompraCarta.onClick.RemoveAllListeners();
         botaoCompraCarta.onClick.AddListener(() =>
         {
             Debug.Log("Botão Compra Carta Clicado");
@@ -57,7 +57,15 @@ public class EstadoEspera : EstadoJogo
             botaoCompraBilhete.onClick.RemoveAllListeners();
             controle.TrocaEstado(EstadoCompraCarta1.CreateInstance<EstadoCompraCarta1>());
         });
-
+        if (controle.DeckBilhetes.Deck.Count == 0)
+        {
+            botaoCompraBilhete.interactable = false;
+        }
+        else
+        {
+            botaoCompraBilhete.interactable = true;
+        }
+        botaoCompraBilhete.onClick.RemoveAllListeners();
         botaoCompraBilhete.onClick.AddListener(() =>
         {
             Debug.Log("Botão Compra Bilhete Clicado");
@@ -66,7 +74,7 @@ public class EstadoEspera : EstadoJogo
             controle.TrocaEstado(EstadoCompraBilhete.CreateInstance<EstadoCompraBilhete>());
         });
 
-        if (controle.Turno <= controle.Jogadores.Count - 1)
+        if (!controle.JogadorAtual.SelecionouBilhetes)
         {
             SelecionaBilhete(controle);
         }
@@ -78,7 +86,7 @@ public class EstadoEspera : EstadoJogo
 
     public override void ProcessarSelecao(Controle controle, int indice, Carta cartaSelecionada)
     {
-        FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
+        FindAnyObjectByType<AudioManager>().Play("DrawCard");
         Debug.Log("Processando seleção de carta");
         controle.JogadorAtual.MaoCartas.Add(cartaSelecionada);
         controle.CartasAbertas.RemoveAt(indice);
@@ -122,6 +130,13 @@ public class EstadoEspera : EstadoJogo
         foreach (Bilhete bilhete in bilhetesDisponiveis)
         {
             GameObject bilheteObj = Instantiate(prefabBilhete, selectionBox);
+
+            BilheteHover bilheteHover = bilheteObj.GetComponent<BilheteHover>();
+            if (bilheteHover != null)
+            {
+                bilheteHover.Inicializacao(bilhete.Rota[0], bilhete.Rota[1]);
+            }
+
             Button botaoBilhete = bilheteObj.AddComponent<Button>();
             botaoBilhete.onClick.RemoveAllListeners();
             botaoBilhete.onClick.AddListener(() =>
@@ -136,7 +151,8 @@ public class EstadoEspera : EstadoJogo
         botaoSelect.onClick.RemoveAllListeners();
         botaoSelect.onClick.AddListener(() =>
         {
-            FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
+            controle.JogadorAtual.SelecionouBilhetes = true;
+            FindAnyObjectByType<AudioManager>().Play("DrawCard");
             foreach (Bilhete bilhete in bilhetesSelecionados)
             {
                 controle.JogadorAtual.MaoBilhetes.Add(bilhete);
@@ -163,7 +179,7 @@ public class EstadoEspera : EstadoJogo
 
     public void OnBilheteClicked(Bilhete bilhete, Button botaoSelect, GameObject bilheteObj)
     {
-        FindAnyObjectByType<GameAudioManager>().Play("TicketClick");
+        FindAnyObjectByType<AudioManager>().Play("TicketClick");
         if (bilhetesSelecionados.Contains(bilhete))
         {
             bilheteObj.transform.localScale = new Vector3(1f, 1f, 1f);

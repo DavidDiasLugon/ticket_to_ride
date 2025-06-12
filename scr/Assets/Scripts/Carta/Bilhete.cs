@@ -6,6 +6,7 @@ public class Bilhete : ScriptableObject
 {
     private string[] rota = new string[2];
     private int pontos;
+    private bool concluido = false;
 
     public int Pontos
     {
@@ -17,5 +18,11 @@ public class Bilhete : ScriptableObject
     {
         get => rota;
         set => rota = value;
-    } 
+    }
+
+    public bool Concluido
+    {
+        get => concluido;
+        set => concluido = value;
+    }
 }
