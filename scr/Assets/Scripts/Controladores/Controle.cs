@@ -148,7 +148,7 @@ public class Controle : ScriptableObject
 
         string[] lines = ticketsTxt.text.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
         List<Bilhete> bilhetes = new List<Bilhete>();
-        foreach(string line in lines)
+        foreach (string line in lines)
         {
             string[] parts = line.Split("_");
             string origem = parts[0].Trim();
@@ -186,9 +186,44 @@ public class Controle : ScriptableObject
     {
         estadoAtual.RunEstado(this);
     }
-    
+
     public void CartaSelecionada(int index, Carta cartaSelecionada)
     {
         estadoAtual.ProcessarSelecao(this, index, cartaSelecionada);
+    }
+
+    public void ProcessarAcao_AIPegaCartaVisivel(int indiceDaCarta)
+    {
+        // Pega a referência da carta antes de removê-la
+        Carta cartaSelecionada = CartasAbertas[indiceDaCarta];
+
+        Debug.Log($"AÇÃO IA: Pegando carta '{cartaSelecionada.Cor}' do índice {indiceDaCarta}.");
+
+        // Adiciona a carta à mão da IA
+        JogadorAtual.MaoCartas.Add(cartaSelecionada);
+
+        // Remove a carta da lista de cartas abertas
+        CartasAbertas.RemoveAt(indiceDaCarta);
+
+        // Compra uma nova carta do baralho para repor
+        Carta c = DeckCartas.CompraCarta();
+        if (c != null)
+        {
+            CartasAbertas.Insert(indiceDaCarta, c);
+        }
+
+        // Atualiza a UI e verifica se precisa embaralhar as cartas abertas
+        VerificaLocomotivas();
+        _GameManager.Instance.cartasAbertas.AtualizaExibicaoCartasAbertas(CartasAbertas);
+
+        // Lógica de transição de estado, agora dentro de um fluxo controlado
+        if (cartaSelecionada.isLocomotive)
+        {
+            TrocaEstado(EstadoFimTurno.CreateInstance<EstadoFimTurno>());
+        }
+        else
+        {
+            TrocaEstado(EstadoEspera2.CreateInstance<EstadoEspera2>());
+        }
     }
 }

@@ -107,21 +107,24 @@ public class AIController
 
     private void ExecuteFirstCardDrawAction()
     {
+
         for (int i = 0; i < controle.CartasAbertas.Count; i++)
         {
-            if (controle.CartasAbertas[i].isLocomotive)
+            Carta cartaAberta = controle.CartasAbertas[i];
+            if (cartaAberta != null && cartaAberta.isLocomotive)
             {
-                Debug.Log($"AI ({aiPlayer.Nome}) pegando locomotiva visível.");
+                Debug.Log($"AI ({aiPlayer.Nome}) encontrou locomotiva visível. Usando o novo caminho de ação.");
 
-                var estado = EstadoEspera.CreateInstance<EstadoEspera>();
-                estado.ProcessarSelecao(controle, i, controle.CartasAbertas[i]);
+
+                controle.ProcessarAcao_AIPegaCartaVisivel(i);
+
                 return;
             }
-
         }
 
-
-        Debug.Log($"AI ({aiPlayer.Nome}) comprando primeira carta do baralho.");
+        Debug.Log($"AI ({aiPlayer.Nome}) não encontrou carta prioritária. Comprando do baralho.");
         controle.TrocaEstado(EstadoCompraCarta1.CreateInstance<EstadoCompraCarta1>());
     }
+
+
 }

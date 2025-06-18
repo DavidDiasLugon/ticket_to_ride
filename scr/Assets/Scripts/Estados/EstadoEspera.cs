@@ -11,6 +11,7 @@ using Image = UnityEngine.UIElements.Image;
 
 public class EstadoEspera : EstadoJogo
 {
+    private bool podeProcessarInput = false;
     private Button botaoCompraCarta;
     private Button botaoCompraBilhete;
     private Canvas mainCanvas;
@@ -36,12 +37,14 @@ public class EstadoEspera : EstadoJogo
         gameBoard = GameObject.Find("GameBoard");
         tracksContainer = GameObject.Find("TracksContainer");
 
+
         controle.JogadorAtual.UpdateNumeroCartasDict();
         _GameManager.Instance.maoCartas.AtualizaExibicao(controle.JogadorAtual.CartaNmr);
         _GameManager.Instance.uiHud.AtualizaMainHud(controle);
         _GameManager.Instance.uiHud.AtualizaOtherPlayerHud(controle);
 
-        Debug.Log("Turno de: " + controle.JogadorAtual.Nome);
+        Debug.Log("Entrando no Estado de Espera para: " + controle.JogadorAtual.Nome + " | Turno: " + controle.Turno);
+
         botaoCompraCarta = GameObject.Find("BotaoCarta")?.GetComponent<Button>();
         botaoCompraBilhete = GameObject.Find("BotaoBilhete")?.GetComponent<Button>();
         if (botaoCompraCarta == null || botaoCompraBilhete == null)
@@ -49,24 +52,45 @@ public class EstadoEspera : EstadoJogo
             Debug.LogError("Botões de compra não encontrados!");
             return;
         }
+
+
         botaoCompraCarta.onClick.RemoveAllListeners();
         botaoCompraBilhete.onClick.RemoveAllListeners();
 
-        if (controle.Turno <= controle.Jogadores.Count - 1)
+
+        if (controle.Turno < controle.Jogadores.Count)
         {
+            Debug.Log("FASE: Seleção Inicial de Bilhetes.");
+            podeProcessarInput = false;
             SelecionaBilhete(controle);
             return;
         }
+
+
         if (controle.JogadorAtual.isAI)
         {
-            Debug.Log("Jogador é IA, pulando listeners de botão.");
+
+            Debug.Log("Jogador é IA. Escondendo botões e iniciando AIController.");
+
+
+            podeProcessarInput = false;
+            mainCanvas.transform.Find("BotaoCarta")?.gameObject.SetActive(false);
+            mainCanvas.transform.Find("BotaoBilhete")?.gameObject.SetActive(false);
+
+
             AIController ai = new AIController(controle);
             ai.ExecuteMainTurnAction();
         }
         else
         {
 
-            Debug.Log("Jogador é Humano, configurando botões.");
+            Debug.Log("Jogador é Humano. Exibindo botões e configurando cliques.");
+
+
+            podeProcessarInput = false;
+            _GameManager.Instance.StartCoroutine(HabilitarInputTurnoNormal(controle));
+
+
             botaoCompraCarta.onClick.AddListener(() =>
             {
                 Debug.Log("Botão Compra Carta Clicado");
@@ -82,9 +106,35 @@ public class EstadoEspera : EstadoJogo
                 botaoCompraCarta.onClick.RemoveAllListeners();
                 controle.TrocaEstado(EstadoCompraBilhete.CreateInstance<EstadoCompraBilhete>());
             });
-
         }
     }
+
+    private IEnumerator HabilitarInputTurnoNormal(Controle controle)
+    {
+        yield return null; // Espera 1 frame para o EventSystem se acalmar
+
+        Debug.Log("Atraso concluído. Habilitando input para turno normal do jogador.");
+        podeProcessarInput = true;
+
+        // Mostra os botões de ação e configura os cliques
+        botaoCompraCarta?.gameObject.SetActive(true);
+        botaoCompraBilhete?.gameObject.SetActive(true);
+
+        botaoCompraCarta?.onClick.AddListener(() =>
+        {
+            if (!podeProcessarInput) return;
+            podeProcessarInput = false;
+            controle.TrocaEstado(EstadoCompraCarta1.CreateInstance<EstadoCompraCarta1>());
+        });
+
+        botaoCompraBilhete?.onClick.AddListener(() =>
+        {
+            if (!podeProcessarInput) return;
+            podeProcessarInput = false;
+            controle.TrocaEstado(EstadoCompraBilhete.CreateInstance<EstadoCompraBilhete>());
+        });
+    }
+
 
     public override void RunEstado(Controle controle)
     {
@@ -92,6 +142,12 @@ public class EstadoEspera : EstadoJogo
 
     public override void ProcessarSelecao(Controle controle, int indice, Carta cartaSelecionada)
     {
+        if (!podeProcessarInput)
+        {
+            Debug.LogWarning("Input de clique em carta recebido, mas travado para evitar loop. Ignorando.");
+            return;
+        }
+        podeProcessarInput = false;
         FindAnyObjectByType<GameAudioManager>().Play("DrawCard");
         Debug.Log("Processando seleção de carta");
         controle.JogadorAtual.MaoCartas.Add(cartaSelecionada);
