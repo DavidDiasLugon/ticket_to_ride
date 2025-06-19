@@ -45,8 +45,8 @@ public class EstadoEspera : EstadoJogo
 
         Debug.Log("Entrando no Estado de Espera para: " + controle.JogadorAtual.Nome + " | Turno: " + controle.Turno);
 
-        botaoCompraCarta = GameObject.Find("BotaoCarta")?.GetComponent<Button>();
-        botaoCompraBilhete = GameObject.Find("BotaoBilhete")?.GetComponent<Button>();
+        botaoCompraCarta = botaoCarta;
+        botaoCompraBilhete = botaoBilhete;
         if (botaoCompraCarta == null || botaoCompraBilhete == null)
         {
             Debug.LogError("Botões de compra não encontrados!");
@@ -61,7 +61,7 @@ public class EstadoEspera : EstadoJogo
         if (controle.Turno < controle.Jogadores.Count)
         {
             Debug.Log("FASE: Seleção Inicial de Bilhetes.");
-            podeProcessarInput = false;
+            podeProcessarInput = true;
             SelecionaBilhete(controle);
             return;
         }
@@ -87,9 +87,10 @@ public class EstadoEspera : EstadoJogo
             Debug.Log("Jogador é Humano. Exibindo botões e configurando cliques.");
 
 
-            podeProcessarInput = false;
+            podeProcessarInput = true;
             _GameManager.Instance.StartCoroutine(HabilitarInputTurnoNormal(controle));
-
+            botaoCompraCarta.gameObject.SetActive(true);
+            botaoCompraBilhete.gameObject.SetActive(true);
 
             botaoCompraCarta.onClick.AddListener(() =>
             {
@@ -123,14 +124,14 @@ public class EstadoEspera : EstadoJogo
         botaoCompraCarta?.onClick.AddListener(() =>
         {
             if (!podeProcessarInput) return;
-            podeProcessarInput = false;
+            podeProcessarInput = true;
             controle.TrocaEstado(EstadoCompraCarta1.CreateInstance<EstadoCompraCarta1>());
         });
 
         botaoCompraBilhete?.onClick.AddListener(() =>
         {
             if (!podeProcessarInput) return;
-            podeProcessarInput = false;
+            podeProcessarInput = true;
             controle.TrocaEstado(EstadoCompraBilhete.CreateInstance<EstadoCompraBilhete>());
         });
     }

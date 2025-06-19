@@ -699,6 +699,8 @@ MonoBehaviour:
   maoCartas: {fileID: 130425576}
   cartasAbertas: {fileID: 866483771}
   uiHud: {fileID: 380945476}
+  botaoCompraCarta: {fileID: 1263206342}
+  botaoCompraBilhete: {fileID: 397163690}
 --- !u!1 &130425574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,6 +2370,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc7d5ff6c9568fe49b614bfb82545f26, type: 2}
   trackSegmentPrefab: {fileID: 4216032574926552946, guid: 912caf98b24a39945b48cf5870849e57, type: 3}
   tracksParent: {fileID: 985709226}
+  allTrackControllers: []
 --- !u!4 &479935256
 Transform:
   m_ObjectHideFlags: 0

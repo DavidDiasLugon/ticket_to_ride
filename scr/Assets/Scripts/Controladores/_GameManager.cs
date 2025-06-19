@@ -1,5 +1,7 @@
 using UnityEngine;
-
+using UnityEngine;
+using UnityEngine.UI; // <<< ADICIONE ESTA LINHA no topo
+using System.Collections;
 public class _GameManager : MonoBehaviour
 {
     public static _GameManager Instance;
@@ -7,7 +9,8 @@ public class _GameManager : MonoBehaviour
     public UIMao maoCartas;
     public UICartasAbertas cartasAbertas;
     public UIHud uiHud;
-
+    public Button botaoCompraCarta;
+    public Button botaoCompraBilhete;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -15,7 +18,7 @@ public class _GameManager : MonoBehaviour
     }
 
     void Start()
-    {   
+    {
         controle = Controle.CreateInstance<Controle>();
 
         controle.CriaCartas();
