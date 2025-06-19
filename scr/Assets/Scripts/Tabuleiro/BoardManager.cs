@@ -144,7 +144,7 @@ public class BoardManager : MonoBehaviour
                 // Calcula a dire��o do trilho
                 Vector3 direction = (endPos - startPos).normalized;
                 // Calcula um vetor perpendicular (para o deslocamento lateral)
-                Vector3 perpendicular = new Vector3(-direction.y, direction.x, 0) * 0.2f; // O valor 0.2f � a dist�ncia do deslocamento, ajuste conforme necess�rio
+                Vector3 perpendicular = new Vector3(-direction.y, direction.x, 0) * 0.1f; // O valor 0.2f � a dist�ncia do deslocamento, ajuste conforme necess�rio
 
                 // Para garantir que os g�meos se desloquem em dire��es opostas de forma consistente,
                 // usamos o nome dos objetos para decidir a dire��o do deslocamento.

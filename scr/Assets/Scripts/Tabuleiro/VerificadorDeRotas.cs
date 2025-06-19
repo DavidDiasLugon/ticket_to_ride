@@ -14,7 +14,7 @@ public static class VerificadorDeRotas
         var cidadesJaVisitadas = new HashSet<string>();
         filaDeCidadesParaVisitar.Enqueue(origem);
         cidadesJaVisitadas.Add(origem);
-        
+
         while (filaDeCidadesParaVisitar.Count > 0)
         {
             string cidadeAtual = filaDeCidadesParaVisitar.Dequeue();
@@ -49,5 +49,38 @@ public static class VerificadorDeRotas
             grafo[cidade2].Add(cidade1);
         }
         return grafo;
+    }
+    
+    public static int MaiorCaminhoContinuo(List<TrackController> todasAsRotas, string nomeJogador)
+    {
+        var grafoDoJogador = ConstruirGrafoDoJogador(todasAsRotas, nomeJogador);
+        if (grafoDoJogador.Count == 0)
+        {
+            return 0;
+        }
+        int tamanhoMaximo = 0;
+        foreach (var cidadeInicial in grafoDoJogador.Keys)
+        {
+            DfsParaRotaMaisLonga(cidadeInicial, -1, grafoDoJogador, new Dictionary<string, int>(), ref tamanhoMaximo);
+        }
+        return tamanhoMaximo;
+    }
+
+    public static void DfsParaRotaMaisLonga(string cidadeAtual, int tamanhoAtual, Dictionary<string, List<string>> grafo, Dictionary<string, int> visitados, ref int tamanhoMaximo)
+    {
+        visitados[cidadeAtual] = tamanhoAtual;
+        if (tamanhoAtual > tamanhoMaximo)
+        {
+            tamanhoMaximo = tamanhoAtual;
+        }
+
+        foreach (var vizinho in grafo[cidadeAtual])
+        {
+            if (!visitados.ContainsKey(vizinho))
+            {
+                DfsParaRotaMaisLonga(vizinho, tamanhoAtual + 1, grafo, visitados, ref tamanhoMaximo);
+            }
+        }
+        visitados.Remove(cidadeAtual);
     }
 }

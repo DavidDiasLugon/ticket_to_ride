@@ -20,6 +20,10 @@ public class DeckCartas : ScriptableObject
 
     public Carta CompraCarta()
     {
+        if (Deck.Count == 0)
+        {
+            return null;
+        }
         Carta cartaComprada = deckCartas[0];
         deckCartas.RemoveAt(0);
         return cartaComprada;

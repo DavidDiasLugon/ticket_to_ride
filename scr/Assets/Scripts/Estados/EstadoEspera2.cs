@@ -10,7 +10,15 @@ public class EstadoEspera2 : EstadoJogo
         controle.JogadorAtual.UpdateNumeroCartasDict();
         _GameManager.Instance.maoCartas.AtualizaExibicao(controle.JogadorAtual.CartaNmr);
         botaoCompraCarta = GameObject.Find("BotaoCarta")?.GetComponent<Button>();
-
+        if (controle.DeckCartas.Deck.Count > 0)
+        {
+            botaoCompraCarta.interactable = true;
+        }
+        else
+        {
+            botaoCompraCarta.interactable = false;
+        }
+        botaoCompraCarta.onClick.RemoveAllListeners();
         botaoCompraCarta.onClick.AddListener(() =>
         {
             Debug.Log("Botão Compra Carta Clicado");
@@ -30,7 +38,10 @@ public class EstadoEspera2 : EstadoJogo
         controle.JogadorAtual.MaoCartas.Add(cartaSelecionada);
         controle.CartasAbertas.RemoveAt(indice);
         Carta c = controle.DeckCartas.CompraCarta();
-        controle.CartasAbertas.Add(c);
+        if (c != null)
+        {
+            controle.CartasAbertas.Add(c);
+        }
         controle.VerificaLocomotivas();
         _GameManager.Instance.cartasAbertas.AtualizaExibicaoCartasAbertas(controle.CartasAbertas);
         botaoCompraCarta.onClick.RemoveAllListeners();

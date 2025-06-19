@@ -79,10 +79,16 @@ public class EstadoConquista : EstadoJogo
         {
             jogador.RemoverCartasPorCor("colorido", locomotivasARemover, controle);
         }
+        controle.ReporMesaSeNecessario();
 
         int [] tabelaPontuacao = { 0, 1, 2, 4, 7, 10, 15 };
         jogador.Pontuacao += tabelaPontuacao[custo];
         jogador.Trens -= custo;
+
+        if (jogador.Trens <= 2 && !controle.RodadaFinalComecou)
+        {
+            controle.IniciarRodadaFinal(jogador.Nome);
+        }
 
         Color corDoJogador = FindAnyObjectByType<UIHud>().GetColor(jogador);
         trilho.Claim(jogador.Nome, corDoJogador);

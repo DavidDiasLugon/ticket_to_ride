@@ -26,6 +26,7 @@ public class EstadoEspera : EstadoJogo
     private GameObject tracksContainer;
     public override void IniciarEstado(Controle controle)
     {
+        HideMaoBilhetes();
         mainCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         prefabBilhete = Resources.Load<GameObject>("Prefabs/Carta/BilheteNew");
 
@@ -48,6 +49,14 @@ public class EstadoEspera : EstadoJogo
         {
             Debug.LogError("Botões de compra não encontrados!");
             return;
+        }
+        if (controle.DeckCartas.Deck.Count > 0)
+        {
+            botaoCompraCarta.interactable = true;
+        }
+        else
+        {
+            botaoCompraCarta.interactable = false;
         }
         botaoCompraCarta.onClick.RemoveAllListeners();
         botaoCompraCarta.onClick.AddListener(() =>
@@ -91,7 +100,10 @@ public class EstadoEspera : EstadoJogo
         controle.JogadorAtual.MaoCartas.Add(cartaSelecionada);
         controle.CartasAbertas.RemoveAt(indice);
         Carta c = controle.DeckCartas.CompraCarta();
-        controle.CartasAbertas.Add(c);
+        if (c != null)
+        {
+            controle.CartasAbertas.Add(c);
+        }
         controle.VerificaLocomotivas();
         _GameManager.Instance.cartasAbertas.AtualizaExibicaoCartasAbertas(controle.CartasAbertas);
         botaoCompraCarta.onClick.RemoveAllListeners();
@@ -151,6 +163,7 @@ public class EstadoEspera : EstadoJogo
         botaoSelect.onClick.RemoveAllListeners();
         botaoSelect.onClick.AddListener(() =>
         {
+            HideMaoBilhetes();
             controle.JogadorAtual.SelecionouBilhetes = true;
             FindAnyObjectByType<AudioManager>().Play("DrawCard");
             foreach (Bilhete bilhete in bilhetesSelecionados)
@@ -179,6 +192,7 @@ public class EstadoEspera : EstadoJogo
 
     public void OnBilheteClicked(Bilhete bilhete, Button botaoSelect, GameObject bilheteObj)
     {
+        HideMaoBilhetes();
         FindAnyObjectByType<AudioManager>().Play("TicketClick");
         if (bilhetesSelecionados.Contains(bilhete))
         {
@@ -209,5 +223,14 @@ public class EstadoEspera : EstadoJogo
         botaoBilhete.gameObject.SetActive(true);
         //gameBoard.SetActive(true);
         //tracksContainer.SetActive(true);
+    }
+
+    public void HideMaoBilhetes()
+    {
+        UIMaoBilhetes maoBilhetes = FindAnyObjectByType<UIMaoBilhetes>();
+        if (maoBilhetes != null)
+        {
+            maoBilhetes.FecharPainel();
+        }
     }
 }

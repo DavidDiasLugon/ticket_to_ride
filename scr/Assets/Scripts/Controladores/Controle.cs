@@ -14,12 +14,25 @@ public class Controle : ScriptableObject
     private EstadoJogo estadoAtual;
     private TextAsset ticketsTxt;
 
+    private bool rodadaFinalComecou = false;
+    private string nomeJogadorQueIniciouFinal = "";
+
     void OnEnable()
     {
         deckCartas = CreateInstance<DeckCartas>();
         cartasAbertas = new List<Carta>();
         deckBilhetes = CreateInstance<DeckBilhetes>();
         ticketsTxt = Resources.Load<TextAsset>("Tickets");
+    }
+
+    public bool RodadaFinalComecou
+    {
+        get => rodadaFinalComecou;
+    }
+
+    public string NomeJogadorQueIniciouFinal
+    {
+        get => nomeJogadorQueIniciouFinal;
     }
 
     public List<Jogador> Jogadores
@@ -205,6 +218,34 @@ public class Controle : ScriptableObject
             Debug.Log("Não é possível conquistar");
             FindAnyObjectByType<AudioManager>().Play("FailedConquest");
             draggable.RetornarParaMao();
+        }
+    }
+
+    public void ReporMesaSeNecessario()
+    {
+        while (cartasAbertas.Count < 5 && deckCartas.Deck.Count > 0)
+        {
+            Carta c = deckCartas.CompraCarta();
+            if (c != null)
+            {
+                cartasAbertas.Add(c);
+            }
+            else
+            {
+                break;
+            }
+        }
+        VerificaLocomotivas();
+        _GameManager.Instance.cartasAbertas.AtualizaExibicaoCartasAbertas(cartasAbertas);
+    }
+
+    public void IniciarRodadaFinal(string nomeDoJogador)
+    {
+        if (!rodadaFinalComecou)
+        {
+            rodadaFinalComecou = true;
+            nomeJogadorQueIniciouFinal = nomeDoJogador;
+            Debug.Log($"Rodada Final Iniciada por: {nomeDoJogador}");
         }
     }
 }
