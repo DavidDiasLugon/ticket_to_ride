@@ -91,6 +91,7 @@ public class Jogador : ScriptableObject
             maoCartas.Remove(carta);
             controle.DeckCartas.Add(carta);
         }
+        controle.DeckCartas.Embaralha();
         UpdateNumeroCartasDict();
     }
 }

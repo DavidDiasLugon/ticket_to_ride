@@ -11,6 +11,13 @@ public class SceneLoader : MonoBehaviour
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene("Jogo");  
+        SceneManager.LoadScene("Jogo");
+    }
+    
+    IEnumerator LoadEndGame()
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene("EndGame");  
     }
 }

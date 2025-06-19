@@ -5,19 +5,27 @@ public class EstadoFimTurno : EstadoJogo
     public bool fim = false;
     public override void IniciarEstado(Controle controle)
     {
-        if (controle.JogadorAtual.Trens <= 2)
+        Debug.Log("Fim do turno de: " + controle.JogadorAtual.Nome);
+        controle.Turno++;
+        Jogador proximoJogador = controle.getJogadorAtual();
+
+        if (controle.RodadaFinalComecou)
         {
-            fim = true;
-        }
-        if (fim)
-        {
-            controle.TrocaEstado(EstadoFimJogo.CreateInstance<EstadoFimJogo>());
+            if (proximoJogador.Nome == controle.NomeJogadorQueIniciouFinal)
+            {
+                Debug.Log("A rodada final terminou, Fim de Jogo");
+                controle.TrocaEstado(EstadoFimJogo.CreateInstance<EstadoFimJogo>());
+            }
+            else
+            {
+                Debug.Log($"Turno Final para: {proximoJogador.Nome}");
+                controle.JogadorAtual = proximoJogador;
+                controle.TrocaEstado(EstadoEspera.CreateInstance<EstadoEspera>());
+            }
         }
         else
         {
-            Debug.Log("Fim do turno de: " + controle.JogadorAtual.Nome);
-            controle.Turno++;
-            controle.JogadorAtual = controle.getJogadorAtual();
+            controle.JogadorAtual = proximoJogador;
             controle.TrocaEstado(EstadoEspera.CreateInstance<EstadoEspera>());
         }
     }

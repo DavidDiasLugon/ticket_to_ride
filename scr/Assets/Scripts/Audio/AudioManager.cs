@@ -40,6 +40,12 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
+    public void Stop(string soundName)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
+        s.source.Stop();
+    }
+
     public void SetMusicVolume(float sliderValue)
     {
         string exposedParameterName = "Music";

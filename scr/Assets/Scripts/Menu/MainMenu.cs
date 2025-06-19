@@ -32,6 +32,7 @@ public class MainMenu : MonoBehaviour
 
     public void ConfigurarJogo()
     {
+        GameSettings.jogadores.Clear();
         Jogador jogador1 = ScriptableObject.CreateInstance<Jogador>();
         jogador1.Nome = "PLAYER 1";
         jogador1.Cor = "azul";
