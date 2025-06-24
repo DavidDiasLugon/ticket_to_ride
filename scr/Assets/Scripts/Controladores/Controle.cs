@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -25,6 +27,11 @@ public class Controle : ScriptableObject
         ticketsTxt = Resources.Load<TextAsset>("Tickets");
     }
 
+    public List<Jogador> Jogadores
+    {
+        get => jogadores;
+    }
+
     public bool RodadaFinalComecou
     {
         get => rodadaFinalComecou;
@@ -33,11 +40,6 @@ public class Controle : ScriptableObject
     public string NomeJogadorQueIniciouFinal
     {
         get => nomeJogadorQueIniciouFinal;
-    }
-
-    public List<Jogador> Jogadores
-    {
-        get => jogadores;
     }
 
     public EstadoJogo EstadoAtual
@@ -247,5 +249,152 @@ public class Controle : ScriptableObject
             nomeJogadorQueIniciouFinal = nomeDoJogador;
             Debug.Log($"Rodada Final Iniciada por: {nomeDoJogador}");
         }
+    }
+
+    public void ProcessarAcaoAIConquistaRota(TrackController trilho)
+    {
+        Jogador jogadorAI = JogadorAtual;
+        TrackData dadosTrilho = trilho.trackData;
+        int custo = dadosTrilho.length;
+
+        string corAPagar = "";
+        if (dadosTrilho.color == TrackColor.Gray)
+        {
+            corAPagar = jogadorAI.CartaNmr.Where(par => par.Key != "colorido").OrderByDescending(par => par.Value).FirstOrDefault().Key;
+        }
+        else
+        {
+            corAPagar = AIController.ConverteTrackColorParaString(dadosTrilho.color);
+        }
+
+        int cartasDaCor = jogadorAI.CartaNmr.ContainsKey(corAPagar) ? jogadorAI.CartaNmr[corAPagar] : 0;
+        int cartasParaRemover = Mathf.Min(custo, cartasDaCor);
+        jogadorAI.RemoverCartasPorCor(corAPagar, cartasParaRemover, this);
+
+        int locomotivasARemover = custo - cartasParaRemover;
+        if (locomotivasARemover > 0)
+        {
+            jogadorAI.RemoverCartasPorCor("colorido", locomotivasARemover, this);
+        }
+        int[] tabelaPontos = { 0, 1, 2, 4, 7, 10, 15 };
+        jogadorAI.Pontuacao += tabelaPontos[custo];
+        jogadorAI.Trens -= custo;
+
+        Color corDoPlayer = FindAnyObjectByType<UIHud>().GetColor(jogadorAI);
+        trilho.Claim(jogadorAI.Nome, corDoPlayer);
+        FindAnyObjectByType<AudioManager>().Play("RouteConquered");
+
+        jogadorAI.UpdateNumeroCartasDict();
+        _GameManager.Instance.maoCartas.AtualizaExibicao(jogadorAI.CartaNmr);
+        _GameManager.Instance.uiHud.AtualizaMainHud(this);
+        ReporMesaSeNecessario();
+        EstadoConquista ec = EstadoConquista.CreateInstance<EstadoConquista>();
+        ec.VerificarBilhetesCompletos(this);
+        if (jogadorAI.Trens <= 2 && !this.RodadaFinalComecou)
+        {
+            this.IniciarRodadaFinal(jogadorAI.Nome);
+        }
+        //TrocaEstado(EstadoFimTurno.CreateInstance<EstadoFimTurno>());
+    }
+
+    public void ProcessarAcaoAIComprabilhete()
+    {
+        List<Bilhete> bilhetesDisponíveis = new List<Bilhete>();
+        for (int i = 0; i < 3; i++)
+        {
+            Bilhete b = DeckBilhetes.CompraBilhete();
+            if (b != null)
+            {
+                bilhetesDisponíveis.Add(b);
+            }
+        }
+        if (bilhetesDisponíveis.Count == 0)
+        {
+            ProcessarAcaoAICompraCarta();
+            return;
+        }
+        AIController ai = new AIController(this);
+        int minTokeep = 1;
+        List<Bilhete> bilhetesEscolhidos = ai.ChooseTickets(bilhetesDisponíveis, minTokeep);
+        foreach (var bilhete in bilhetesEscolhidos)
+        {
+            JogadorAtual.MaoBilhetes.Add(bilhete);
+            FindAnyObjectByType<AudioManager>().Play("DrawCard");
+        }
+        List<Bilhete> bilhetesRestantes = bilhetesDisponíveis.Except(bilhetesEscolhidos).ToList();
+        foreach (var bilhete in bilhetesRestantes)
+        {
+            DeckBilhetes.Deck.Add(bilhete);
+        }
+        DeckBilhetes.Embaralha();
+        _GameManager.Instance.uiHud.AtualizaMainHud(this);
+        //TrocaEstado(EstadoFimTurno.CreateInstance<EstadoFimTurno>());
+    }
+
+    public void ProcessarAcaoAICompraCarta()
+    {
+        AIController ai = new AIController(this);
+        int indicePrimeiraCarta = ai.ExecuteFirstCardDrawAction(this);
+        Carta primeiraCarta;
+        if (indicePrimeiraCarta == -1)
+        {
+            primeiraCarta = DeckCartas.CompraCarta();
+        }
+        else
+        {
+            primeiraCarta = CartasAbertas[indicePrimeiraCarta];
+            CartasAbertas.RemoveAt(indicePrimeiraCarta);
+            Carta reposicao1 = DeckCartas.CompraCarta();
+            if (reposicao1 != null)
+            {
+                cartasAbertas.Insert(indicePrimeiraCarta, reposicao1);
+            }
+        }
+
+        if (primeiraCarta != null)
+        {
+            JogadorAtual.MaoCartas.Add(primeiraCarta);
+            FindAnyObjectByType<AudioManager>().Play("DrawCard");
+        }
+
+        if (indicePrimeiraCarta != -1 && primeiraCarta != null && primeiraCarta.isLocomotive)
+        {
+            FinalizarTurnoIA();
+            return;
+        }
+
+
+        int indiceSegundaCarta = ai.ExecuteSecondCardDrawAction(this);
+        Carta segundaCarta;
+        if (indiceSegundaCarta == -1)
+        {
+            segundaCarta = DeckCartas.CompraCarta();
+        }
+        else
+        {
+            segundaCarta = cartasAbertas[indiceSegundaCarta];
+            CartasAbertas.RemoveAt(indiceSegundaCarta);
+            Carta reposicao2 = DeckCartas.CompraCarta();
+            if (reposicao2 != null)
+            {
+                CartasAbertas.Insert(indiceSegundaCarta, reposicao2);
+            }
+            if (segundaCarta != null)
+            {
+                JogadorAtual.MaoCartas.Add(segundaCarta);
+                FindAnyObjectByType<AudioManager>().Play("DrawCard");
+            }
+            FinalizarTurnoIA();
+        }
+    }
+
+    private void FinalizarTurnoIA()
+    {
+        JogadorAtual.UpdateNumeroCartasDict();
+        _GameManager.Instance.maoCartas.AtualizaExibicao(JogadorAtual.CartaNmr);
+        _GameManager.Instance.cartasAbertas.AtualizaExibicaoCartasAbertas(CartasAbertas);
+        VerificaLocomotivas();
+        _GameManager.Instance.uiHud.AtualizaMainHud(this);
+        //TrocaEstado(EstadoFimTurno.CreateInstance<EstadoFimTurno>());
     }
 }

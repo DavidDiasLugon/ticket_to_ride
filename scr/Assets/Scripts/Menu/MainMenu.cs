@@ -70,7 +70,21 @@ public class MainMenu : MonoBehaviour
                 }
                 else if (opcaoSelecionada == "IA")
                 {
-                    // Criação de jogador IA
+                    TextMeshProUGUI nomeComponent = player.GetComponentInChildren<TextMeshProUGUI>();
+                    Jogador jogadorIA = ScriptableObject.CreateInstance<Jogador>();
+                    jogadorIA.Nome = nomeComponent.text + " (IA)";
+
+
+                    if (nomeComponent.text == "PLAYER 2") jogadorIA.Cor = "verde";
+                    else if (nomeComponent.text == "PLAYER 3") jogadorIA.Cor = "rosa";
+                    else if (nomeComponent.text == "PLAYER 4") jogadorIA.Cor = "vermelho";
+                    else jogadorIA.Cor = "amarelo";
+
+
+                    jogadorIA.isAI = true;
+
+                    GameSettings.jogadores.Add(jogadorIA);
+                    Debug.Log($"Jogador {jogadorIA.Nome} criado como IA.");
                 }
             }
         }

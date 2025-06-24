@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class _GameManager : MonoBehaviour
@@ -7,6 +8,13 @@ public class _GameManager : MonoBehaviour
     public UIMao maoCartas;
     public UICartasAbertas cartasAbertas;
     public UIHud uiHud;
+    public CanvasGroup canvasGroupCartasAbertas;
+    public RectTransform MaoJogador;
+    public CanvasGroup canvasGroupMaoJogador;
+    public CanvasGroup canvasGroupGameBoard;
+    public CanvasGroup canvasGroupMainCanvas;
+    public CanvasGroup canvasGroupTrackContainer;
+    public TextMeshProUGUI anuncios;
 
     private void Awake()
     {
