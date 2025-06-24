@@ -43,6 +43,45 @@ public class EstadoEspera : EstadoJogo
         _GameManager.Instance.uiHud.AtualizaOtherPlayerHud(controle);
 
         Debug.Log("Turno de: " + controle.JogadorAtual.Nome);
+        
+        if (controle.JogadorAtual.isAI)
+        {
+            _GameManager.Instance.canvasGroupCartasAbertas.blocksRaycasts = false;
+            _GameManager.Instance.canvasGroupCartasAbertas.interactable = false;
+            _GameManager.Instance.canvasGroupGameBoard.blocksRaycasts = false;
+            _GameManager.Instance.canvasGroupGameBoard.interactable = false;
+            foreach (Transform child in _GameManager.Instance.MaoJogador.gameObject.transform)
+            {
+                GameObject carta = child.gameObject;
+                carta.GetComponent<CanvasGroup>().interactable = false;
+                carta.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
+            _GameManager.Instance.canvasGroupMaoJogador.alpha = 0;
+            _GameManager.Instance.canvasGroupMainCanvas.blocksRaycasts = false;
+            _GameManager.Instance.canvasGroupMainCanvas.interactable = false;
+            _GameManager.Instance.canvasGroupTrackContainer.blocksRaycasts = false;
+            _GameManager.Instance.canvasGroupTrackContainer.interactable = false;
+            TextMeshProUGUI anuncio = _GameManager.Instance.anuncios;
+            anuncio.gameObject.SetActive(true);
+            _GameManager.Instance.StartCoroutine(ExecutarTurnoIA(controle));
+            return;
+        }
+
+        _GameManager.Instance.canvasGroupCartasAbertas.blocksRaycasts = true;
+        _GameManager.Instance.canvasGroupCartasAbertas.interactable = true;
+        _GameManager.Instance.canvasGroupGameBoard.blocksRaycasts = true;
+        _GameManager.Instance.canvasGroupGameBoard.interactable = true;
+        foreach (Transform child in _GameManager.Instance.MaoJogador.gameObject.transform)
+        {
+            GameObject carta = child.gameObject;
+            carta.GetComponent<CanvasGroup>().interactable = true;
+            carta.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        _GameManager.Instance.canvasGroupMaoJogador.alpha = 1;
+        _GameManager.Instance.canvasGroupMainCanvas.blocksRaycasts = true;
+        _GameManager.Instance.canvasGroupMainCanvas.interactable = true;
+        _GameManager.Instance.canvasGroupTrackContainer.blocksRaycasts = true;
+        _GameManager.Instance.canvasGroupTrackContainer.interactable = true;
         botaoCompraCarta = GameObject.Find("BotaoCarta")?.GetComponent<Button>();
         botaoCompraBilhete = GameObject.Find("BotaoBilhete")?.GetComponent<Button>();
         if (botaoCompraCarta == null || botaoCompraBilhete == null)
@@ -232,5 +271,48 @@ public class EstadoEspera : EstadoJogo
         {
             maoBilhetes.FecharPainel();
         }
+    }
+
+    IEnumerator ExecutarTurnoIA(Controle controle)
+    {
+        TextMeshProUGUI anuncio = _GameManager.Instance.anuncios;
+        anuncio.gameObject.SetActive(true);
+
+        anuncio.text = $"Início do turno de {controle.JogadorAtual.Nome}";
+        yield return new WaitForSeconds(3.0f);
+
+        anuncio.text = $"{controle.JogadorAtual.Nome} está decidindo sua jogada";
+        yield return new WaitForSeconds(3.0f);
+
+        AIController ai = new AIController(controle);
+
+        if (!controle.JogadorAtual.SelecionouBilhetes)
+        {
+            List<Bilhete> bilhetesDisponíveis = new List<Bilhete>();
+            for (int i = 0; i < 3; i++)
+            {
+                Bilhete b = controle.DeckBilhetes.CompraBilhete();
+                if (b != null)
+                {
+                    bilhetesDisponíveis.Add(b);
+                }
+            }
+            int minTokeep = 2;
+            List<Bilhete> bilhetesEscolhidos = ai.ChooseTickets(bilhetesDisponíveis, minTokeep);
+            foreach (var bilhete in bilhetesEscolhidos)
+            {
+                controle.JogadorAtual.MaoBilhetes.Add(bilhete);
+            }
+            List<Bilhete> bilhetesRestantes = bilhetesDisponíveis.Except(bilhetesEscolhidos).ToList();
+            foreach (var bilhete in bilhetesRestantes)
+            {
+                controle.DeckBilhetes.Deck.Add(bilhete);
+            }
+            controle.DeckBilhetes.Embaralha();
+            _GameManager.Instance.uiHud.AtualizaMainHud(controle);
+            controle.JogadorAtual.SelecionouBilhetes = true;
+        }
+        ai.ExecuteMainTurnAction();
+        yield return _GameManager.Instance.StartCoroutine(ai.ExecuteMainTurnAction());
     }
 }

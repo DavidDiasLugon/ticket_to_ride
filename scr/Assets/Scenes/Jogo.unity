@@ -214,18 +214,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Vancouver
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Vancouver
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Vancouver
@@ -286,6 +274,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Vancouver
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Vancouver
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -312,18 +312,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Nashville
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Nashville
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Nashville
@@ -384,6 +372,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Nashville
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Nashville
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -410,18 +410,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Saint Louis
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Saint Louis
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Saint Louis
@@ -481,6 +469,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Saint Louis
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Saint Louis
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -629,18 +629,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Duluth
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Duluth
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Duluth
@@ -700,6 +688,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Duluth
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Duluth
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -767,6 +767,13 @@ MonoBehaviour:
   maoCartas: {fileID: 130425576}
   cartasAbertas: {fileID: 866483771}
   uiHud: {fileID: 380945476}
+  canvasGroupCartasAbertas: {fileID: 397154277}
+  MaoJogador: {fileID: 1740794391}
+  canvasGroupMaoJogador: {fileID: 1740794395}
+  canvasGroupGameBoard: {fileID: 1065394511}
+  canvasGroupMainCanvas: {fileID: 1273907399}
+  canvasGroupTrackContainer: {fileID: 985709227}
+  anuncios: {fileID: 846705713}
 --- !u!1 &114095055
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,18 +904,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Washington
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Washington
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Washington
@@ -968,6 +963,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Washington
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Washington
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1131,18 +1138,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Boston
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Boston
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Boston
@@ -1202,6 +1197,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Boston
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Boston
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1503,18 +1510,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Winnipeg
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Winnipeg
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Winnipeg
@@ -1574,6 +1569,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Winnipeg
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Winnipeg
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2016,18 +2023,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Charleston
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Charleston
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Charleston
@@ -2087,6 +2082,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Charleston
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Charleston
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2518,18 +2525,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Chicago
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Chicago
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Chicago
@@ -2590,6 +2585,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Chicago
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Chicago
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2620,6 +2627,7 @@ GameObject:
   - component: {fileID: 397154275}
   - component: {fileID: 397154274}
   - component: {fileID: 397154276}
+  - component: {fileID: 397154277}
   m_Layer: 5
   m_Name: CartasAbertas
   m_TagString: Untagged
@@ -2710,6 +2718,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &397154277
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397154272}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &397163688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2861,18 +2881,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Helena
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Helena
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Helena
@@ -2933,6 +2941,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Helena
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Helena
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2959,18 +2979,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: El Paso
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: El Paso
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: El Paso
@@ -3030,6 +3038,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: El Paso
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: El Paso
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3315,18 +3335,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Santa Fe
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Santa Fe
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Santa Fe
@@ -3387,6 +3395,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Santa Fe
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Santa Fe
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3413,18 +3433,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Houston
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Houston
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Houston
@@ -3485,6 +3493,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Houston
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Houston
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3511,18 +3531,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Oklahoma City
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Oklahoma City
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Oklahoma City
@@ -3582,6 +3590,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Oklahoma City
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Oklahoma City
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4017,6 +4037,142 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bilhetePrefab: {fileID: 2100639093261516123, guid: 4c43fd1e307deda4d8bb07dac1a4dd93, type: 3}
   painelBilhetes: {fileID: 2049852540}
+--- !u!1 &846705711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 846705712}
+  - component: {fileID: 846705714}
+  - component: {fileID: 846705713}
+  m_Layer: 5
+  m_Name: Anuncios
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &846705712
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846705711}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1273907398}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -100, y: -450}
+  m_SizeDelta: {x: 900, y: 180}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &846705713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846705711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 9e9459462c4c4be4ca17333a8b66143d, type: 2}
+  m_sharedMaterial: {fileID: 8233240998168389903, guid: 9e9459462c4c4be4ca17333a8b66143d, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 45
+  m_fontSizeBase: 45
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &846705714
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846705711}
+  m_CullTransparentMesh: 1
 --- !u!1 &866483769
 GameObject:
   m_ObjectHideFlags: 0
@@ -4147,18 +4303,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Miami
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Miami
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Miami
@@ -4218,6 +4362,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Miami
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Miami
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4454,6 +4610,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 985709226}
+  - component: {fileID: 985709227}
   m_Layer: 0
   m_Name: TracksContainer
   m_TagString: Untagged
@@ -4476,6 +4633,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &985709227
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985709225}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &986821687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4484,18 +4653,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Omaha
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Omaha
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Omaha
@@ -4556,6 +4713,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Omaha
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Omaha
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4582,18 +4751,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Sault Ste. Marie
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Sault Ste. Marie
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Sault Ste. Marie
@@ -4654,6 +4811,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Sault Ste. Marie
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Sault Ste. Marie
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4680,18 +4849,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Raleigh
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Raleigh
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Raleigh
@@ -4752,6 +4909,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Raleigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Raleigh
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4778,18 +4947,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Denver
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Denver
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Denver
@@ -4850,6 +5007,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Denver
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Denver
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4876,18 +5045,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Las Vegas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Las Vegas
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Las Vegas
@@ -4947,6 +5104,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Las Vegas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Las Vegas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5078,6 +5247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1065394510}
   - component: {fileID: 1065394509}
+  - component: {fileID: 1065394511}
   m_Layer: 0
   m_Name: GameBoard
   m_TagString: Untagged
@@ -5191,6 +5361,18 @@ Transform:
   - {fileID: 988059720}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &1065394511
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065394508}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1086926522
 GameObject:
   m_ObjectHideFlags: 0
@@ -5480,18 +5662,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: New York
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: New York
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: New York
@@ -5551,6 +5721,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: New York
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: New York
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5639,18 +5821,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Calgary
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Calgary
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Calgary
@@ -5711,6 +5881,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Calgary
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Calgary
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5737,18 +5919,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Montreal
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Montreal
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Montreal
@@ -5808,6 +5978,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Montreal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Montreal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5910,18 +6092,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Seattle
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Seattle
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Seattle
@@ -5981,6 +6151,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Seattle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Seattle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6380,6 +6562,7 @@ GameObject:
   - component: {fileID: 1273907397}
   - component: {fileID: 1273907396}
   - component: {fileID: 1273907395}
+  - component: {fileID: 1273907399}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6465,6 +6648,7 @@ RectTransform:
   - {fileID: 1678649016}
   - {fileID: 1428896242}
   - {fileID: 1740794391}
+  - {fileID: 846705712}
   - {fileID: 88832928}
   - {fileID: 397154273}
   - {fileID: 1263206341}
@@ -6480,6 +6664,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &1273907399
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273907394}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1278837424
 GameObject:
   m_ObjectHideFlags: 0
@@ -6963,18 +7159,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Portland
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Portland
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Portland
@@ -7034,6 +7218,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Portland
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Portland
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7300,18 +7496,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Kansas City
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Kansas City
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Kansas City
@@ -7371,6 +7555,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Kansas City
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Kansas City
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7523,18 +7719,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Dallas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Dallas
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Dallas
@@ -7594,6 +7778,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Dallas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Dallas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7723,18 +7919,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Pittsburg
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Pittsburg
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Pittsburg
@@ -7794,6 +7978,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Pittsburg
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Pittsburg
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8029,18 +8225,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: San Francisco
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: San Francisco
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: San Francisco
@@ -8100,6 +8284,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: San Francisco
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: San Francisco
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8350,6 +8546,7 @@ GameObject:
   - component: {fileID: 1740794393}
   - component: {fileID: 1740794392}
   - component: {fileID: 1740794394}
+  - component: {fileID: 1740794395}
   m_Layer: 5
   m_Name: CardBox
   m_TagString: Untagged
@@ -8440,6 +8637,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!225 &1740794395
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740794390}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1757752385
 GameObject:
   m_ObjectHideFlags: 0
@@ -8702,18 +8911,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Toronto
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Toronto
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Toronto
@@ -8773,6 +8970,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Toronto
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Toronto
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9037,18 +9246,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Little Rock
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Little Rock
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Little Rock
@@ -9108,6 +9305,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Little Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Little Rock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9214,18 +9423,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Phoenix
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Phoenix
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Phoenix
@@ -9286,6 +9483,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Phoenix
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Phoenix
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9312,18 +9521,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Salt Lake City
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Salt Lake City
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Salt Lake City
@@ -9383,6 +9580,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Salt Lake City
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Salt Lake City
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9981,10 +10190,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: shapeSpriteRenderer
       value: 
@@ -10040,6 +10245,10 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10169,18 +10378,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065394510}
     m_Modifications:
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: cityName
-      value: Los Angeles
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: shapeSpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
-      propertyPath: m_text
-      value: Los Angeles
-      objectReference: {fileID: 0}
     - target: {fileID: 2900014202317871615, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: cityName
       value: Los Angeles
@@ -10240,6 +10437,18 @@ PrefabInstance:
     - target: {fileID: 5184990213184819697, guid: fb80c212b578b9a4fbea8917eb7c14cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: cityName
+      value: Los Angeles
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900014202317871615, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: shapeSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989135263313321891, guid: e8db0a7914dab014da67c2f10b00d518, type: 3}
+      propertyPath: m_text
+      value: Los Angeles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
