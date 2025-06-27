@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Tests1")]
 public class TrackController : MonoBehaviour
 {
     // --- Vari�veis ---
     public TrackData trackData;
     public List<TrackSegmentController> segments = new List<TrackSegmentController>();
-    public bool isClaimed { get; private set; } = false;
+    public bool isClaimed { get; internal set; } = false;
     public string ownerPlayerName { get; private set; } = "";
 
     private GameManager gameManager;
