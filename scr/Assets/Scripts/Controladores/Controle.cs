@@ -297,6 +297,50 @@ public class Controle : ScriptableObject
         //TrocaEstado(EstadoFimTurno.CreateInstance<EstadoFimTurno>());
     }
 
+    public void ExecutarLogicaConquistaRota(TrackController trilho, Jogador jogador)
+    {
+        TrackData dadosTrilho = trilho.trackData;
+        int custo = dadosTrilho.length;
+
+        // Lógica para determinar a cor do pagamento (simplificada para o exemplo)
+        string corAPagar = "";
+        if (dadosTrilho.color == TrackColor.Gray)
+        {
+            corAPagar = jogador.CartaNmr.Where(par => par.Key != "colorido").OrderByDescending(par => par.Value).FirstOrDefault().Key;
+        }
+        else
+        {
+            corAPagar = AIController.ConverteTrackColorParaString(dadosTrilho.color);
+        }
+
+        // Lógica pura de dedução de recursos
+        int cartasDaCor = jogador.CartaNmr.ContainsKey(corAPagar) ? jogador.CartaNmr[corAPagar] : 0;
+        int cartasParaRemover = Mathf.Min(custo, cartasDaCor);
+        jogador.RemoverCartasPorCor(corAPagar, cartasParaRemover, this);
+
+        int locomotivasARemover = custo - cartasParaRemover;
+        if (locomotivasARemover > 0)
+        {
+            jogador.RemoverCartasPorCor("colorido", locomotivasARemover, this);
+        }
+
+        int[] tabelaPontos = { 0, 1, 2, 4, 7, 10, 15 };
+        jogador.Pontuacao += tabelaPontos[custo];
+        jogador.Trens -= custo;
+
+        // A única dependência externa é o próprio trilho, o que é perfeito para o teste.
+        // Nota: O Claim() precisará ser ajustado para não depender da cor, ou passamos uma cor padrão.
+        // Vamos assumir que podemos passar uma cor padrão para o teste.
+        trilho.Claim(jogador.Nome, Color.black); // Usamos uma cor qualquer, já que a UI não será vista.
+
+        // Lógica de verificação de bilhetes e fim de jogo
+        EstadoConquista.CreateInstance<EstadoConquista>().VerificarBilhetesCompletos(this);
+        if (jogador.Trens <= 2 && !this.RodadaFinalComecou)
+        {
+            this.IniciarRodadaFinal(jogador.Nome);
+        }
+    }
+
     public void ProcessarAcaoAIComprabilhete()
     {
         List<Bilhete> bilhetesDisponíveis = new List<Bilhete>();

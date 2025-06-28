@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine; // Adicionado para usar GameObject e ScriptableObject
 
+
 // ----- INÍCIO DAS CLASSES MOCK -----
 // Classes "falsas" que simulam o jogo para que possamos controlar o cenário de teste.
 

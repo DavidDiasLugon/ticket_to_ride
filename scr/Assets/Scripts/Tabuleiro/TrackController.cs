@@ -22,7 +22,7 @@ public class TrackController : MonoBehaviour
     void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
-        if (gameManager == null) Debug.LogError("TrackController n�o conseguiu encontrar o GameManager!");
+        if (gameManager == null) Debug.LogError("TrackController não conseguiu encontrar o GameManager!");
         // InitializeVisuals � chamado por Initialize agora
     }
 
