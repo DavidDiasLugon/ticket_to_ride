@@ -131,4 +131,92 @@ public class AI_Integration_Tests
 
         yield return null;
     }
+
+    [UnityTest]
+    public IEnumerator IA_DecideComprarBilhetes_QuandoTemPoucosObjetivosEMuitosTrens()
+    {
+        // --- ARRANGE ---
+        // Condição: < 2 bilhetes, > 20 trens
+        aiPlayer.MaoBilhetes.Clear(); // Garante 0 bilhetes
+        aiPlayer.Trens = 30;
+
+        // Preparar o baralho de bilhetes no Controle
+        var bilhete1 = ScriptableObject.CreateInstance<Bilhete>();
+        var bilhete2 = ScriptableObject.CreateInstance<Bilhete>();
+        var bilhete3 = ScriptableObject.CreateInstance<Bilhete>();
+        controle.DeckBilhetes.Deck = new List<Bilhete> { bilhete1, bilhete2, bilhete3 };
+
+        int bilhetesAntes = aiPlayer.MaoBilhetes.Count;
+
+        // --- ACT ---
+        var playerAdapter = new PlayerDataAdapter(aiPlayer);
+        var aiLogic = new AIController_Refactored(playerAdapter, mockBoard); // mockBoard pode estar vazio aqui
+
+        // 1. A IA decide a ação principal
+        AIAction acaoDecidida = aiLogic.DecideAcaoPrincipal();
+        Assert.AreEqual(AIAction.ActionType.DrawTickets, acaoDecidida.Type, "A IA deveria ter decidido comprar bilhetes.");
+
+        // 2. O Controle executa a lógica de comprar 3 bilhetes
+        List<Bilhete> bilhetesDisponiveis = controle.ExecutarLogicaCompraBilhete(3);
+        Assert.AreEqual(3, bilhetesDisponiveis.Count, "O controle deveria ter comprado 3 bilhetes.");
+
+        // 3. A IA decide quais bilhetes manter (lógica de decisão separada)
+        // A regra é manter no mínimo 1
+        AIAction escolhaDeBilhetes = aiLogic.DecideQuaisBilhetesManter(bilhetesDisponiveis, 1);
+        var bilhetesEscolhidos = escolhaDeBilhetes.Data as List<Bilhete>;
+
+        // 4. Adicionamos os bilhetes escolhidos à mão do jogador
+        foreach (var bilhete in bilhetesEscolhidos)
+        {
+            aiPlayer.MaoBilhetes.Add(bilhete);
+        }
+
+        // --- ASSERT ---
+        Assert.IsTrue(aiPlayer.MaoBilhetes.Count > bilhetesAntes, "O número de bilhetes na mão da IA deveria ter aumentado.");
+        Assert.AreEqual(1, aiPlayer.MaoBilhetes.Count, "A IA deveria ter mantido o número mínimo de bilhetes.");
+
+        yield return null;
+    }
+
+    [UnityTest]
+    public IEnumerator IA_DecideComprarCartas_QuandoOutrasAcoesNaoSaoVantajosas()
+    {
+        // --- ARRANGE ---
+        // Condição: A IA não pode conquistar rotas e não precisa de bilhetes.
+        aiPlayer.Trens = 15; // Menos de 20 para não querer bilhetes
+        aiPlayer.MaoBilhetes.Add(ScriptableObject.CreateInstance<Bilhete>());
+        aiPlayer.MaoBilhetes.Add(ScriptableObject.CreateInstance<Bilhete>()); // Garante >= 2 bilhetes
+
+        // O mockBoard está vazio, então não há rotas para conquistar.
+
+        // Preparar o baralho de cartas no Controle
+        var carta1 = ScriptableObject.CreateInstance<Carta>();
+        var carta2 = ScriptableObject.CreateInstance<Carta>();
+        controle.DeckCartas.Deck = new List<Carta> { carta1, carta2 };
+
+        int cartasAntes = aiPlayer.MaoCartas.Count;
+
+        // --- ACT ---
+        var playerAdapter = new PlayerDataAdapter(aiPlayer);
+        var aiLogic = new AIController_Refactored(playerAdapter, mockBoard);
+
+        // 1. A IA decide a ação principal
+        AIAction acaoDecidida = aiLogic.DecideAcaoPrincipal();
+        Assert.AreEqual(AIAction.ActionType.DrawCards, acaoDecidida.Type, "A IA deveria ter decidido comprar cartas.");
+
+        // 2. O Controle executa a lógica de comprar 2 cartas do deck
+        List<Carta> cartasCompradas = controle.ExecutarLogicaCompraCartaDoDeck(2);
+        Assert.AreEqual(2, cartasCompradas.Count);
+
+        // 3. Adicionamos as cartas à mão do jogador
+        foreach (var carta in cartasCompradas)
+        {
+            aiPlayer.MaoCartas.Add(carta);
+        }
+
+        // --- ASSERT ---
+        Assert.AreEqual(cartasAntes + 2, aiPlayer.MaoCartas.Count, "O número de cartas na mão da IA deveria ter aumentado em 2.");
+
+        yield return null;
+    }
 }

@@ -375,6 +375,21 @@ public class Controle : ScriptableObject
         //TrocaEstado(EstadoFimTurno.CreateInstance<EstadoFimTurno>());
     }
 
+    public List<Bilhete> ExecutarLogicaCompraBilhete(int quantidade)
+    {
+        var bilhetesComprados = new List<Bilhete>();
+        if (DeckBilhetes == null || DeckBilhetes.Deck == null) return bilhetesComprados;
+
+        for (int i = 0; i < quantidade; i++)
+        {
+            if (DeckBilhetes.Deck.Count > 0)
+            {
+                bilhetesComprados.Add(DeckBilhetes.CompraBilhete());
+            }
+        }
+        return bilhetesComprados;
+    }
+
     public void ProcessarAcaoAICompraCarta()
     {
         AIController ai = new AIController(this);
@@ -430,6 +445,21 @@ public class Controle : ScriptableObject
             }
             FinalizarTurnoIA();
         }
+    }
+
+    public List<Carta> ExecutarLogicaCompraCartaDoDeck(int quantidade)
+    {
+        var cartasCompradas = new List<Carta>();
+        if (DeckCartas == null || DeckCartas.Deck == null) return cartasCompradas;
+
+        for (int i = 0; i < quantidade; i++)
+        {
+            if (DeckCartas.Deck.Count > 0)
+            {
+                cartasCompradas.Add(DeckCartas.CompraCarta());
+            }
+        }
+        return cartasCompradas;
     }
 
     private void FinalizarTurnoIA()
